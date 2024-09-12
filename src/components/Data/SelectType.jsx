@@ -1,7 +1,7 @@
-import { useState } from "react";
-
-export default function SelectType() {
-  const [selected, setSelected] = useState("Division");
+import { district, division } from "../JSON/data";
+export default function SelectType({ query, setQuery }) {
+  // if (query.type) setQuery({ ...query, data: division });
+  // else setQuery({ ...query, data: district });
   return (
     <div className="hs-dropdown relative inline-flex">
       <button
@@ -12,7 +12,7 @@ export default function SelectType() {
         aria-expanded="false"
         aria-label="Dropdown"
       >
-        {selected}
+        {query?.type ? "Division" : "District"}
         <svg
           className="hs-dropdown-open:rotate-180 size-4"
           xmlns="http://www.w3.org/2000/svg"
@@ -27,19 +27,21 @@ export default function SelectType() {
       </button>
 
       <div
-        className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded p-1 space-y-0.5 mt-2 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
+        className={`hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded p-1 space-y-0.5 mt-2 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full ${
+          division.length < 10 ? "" : "h-[26rem] overflow-y-scroll"
+        }`}
         role="menu"
         aria-orientation="vertical"
         aria-labelledby="hs-dropdown-default"
       >
         <button
-          onClick={() => setSelected("Division")}
+          onClick={() => setQuery({ ...query, type: 1, data: division })}
           className="w-full flex items-center gap-x-3.5 py-2 px-3 rounded-sm text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
         >
           Division
         </button>
         <button
-          onClick={() => setSelected("District")}
+          onClick={() => setQuery({ ...query, type: 0, data: district })}
           className="w-full flex items-center gap-x-3.5 py-2 px-3 rounded-sm text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
         >
           District
