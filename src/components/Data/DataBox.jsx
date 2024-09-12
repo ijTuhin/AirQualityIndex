@@ -12,7 +12,7 @@ export default function DataBox() {
   });
   useEffect(() => {
     
-    // console.log(query);
+    // console.log(query.data);
   }, [query]);
   return (
     <section className={`flex flex-col items-center justify-start gap-y-5`}>

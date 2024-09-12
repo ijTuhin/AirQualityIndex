@@ -2,7 +2,8 @@ import { useState } from "react";
 import { division, district } from "../JSON/data";
 
 export default function SelectLocation({ query, setQuery, data }) {
-  const [location, setLocation] = useState(division[0].division);
+  const [location, setLocation] = useState(data[0].division);
+  console.log(data);
   return (
     <div className="hs-dropdown relative inline-flex w-96">
       <button
@@ -29,23 +30,28 @@ export default function SelectLocation({ query, setQuery, data }) {
 
       <div
         className={`hs-dropdown-menu w-96 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded p-1 space-y-0.5 mt-2 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full ${
-          division.length < 10 ? "" : "h-[26rem] overflow-y-scroll"
+          data?.length < 10 ? "" : "h-[26rem] overflow-y-scroll"
         }`}
         role="menu"
         aria-orientation="vertical"
         aria-labelledby="hs-dropdown-default"
       >
-        {division?.map((i, index) => {
+        {data?.map((i, index) => {
           return (
             <button
               key={index}
               onClick={() => {
-                setLocation(i.division);
-                setQuery({ ...query, district: i.division });
+                if (query?.type) {
+                  setLocation(i.division);
+                  setQuery({ ...query, division: i.division });
+                } else {
+                  setLocation(i.district);
+                  setQuery({ ...query, district: i.district });
+                }
               }}
               className="w-full flex items-center gap-x-3.5 py-2 px-3 rounded-sm text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
             >
-              {i.division}
+              {query?.type ? <>{i.division}</> : <>{i.district}</>}
             </button>
           );
         })}

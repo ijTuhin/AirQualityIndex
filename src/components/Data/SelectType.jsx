@@ -1,7 +1,5 @@
 import { district, division } from "../JSON/data";
 export default function SelectType({ query, setQuery }) {
-  // if (query.type) setQuery({ ...query, data: division });
-  // else setQuery({ ...query, data: district });
   return (
     <div className="hs-dropdown relative inline-flex">
       <button
