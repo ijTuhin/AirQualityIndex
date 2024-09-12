@@ -17,6 +17,7 @@ export default function MapBox() {
           district: data.address.state_district,
           division: data.address.state,
           town: data.address.town,
+          address: data.display_name,
         });
         console.log(data);
       } else {
@@ -39,13 +40,31 @@ export default function MapBox() {
     return null;
   };
   return (
-    <section className={`border flex flex-col`}>
-      <div className={`h-fit px-2 py-3`}>
-        {!locationName ? (
-          <SearchBox/>
-        ) : (
-          <div className={``}>
-            {locationName.division ? (
+    <section className={`flex flex-col`}>
+      <div className={`h-fit px-2 py-3 space-y-2`}>
+        <SearchBox />
+      </div>
+      <div className="flex-grow">
+        <MapContainer
+          center={[23.885, 90.3563]}
+          zoom={6.5}
+          style={{ height: "100%", width: "100%" }}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          <MapClickHandler />
+        </MapContainer>
+      </div>
+      <div className={`p-3 bg-amber-100 text-sm text-gray-700`}>
+        {!locationName ? <></> : <p>Location: {locationName.address}</p>}
+      </div>
+    </section>
+  );
+}
+{
+  /* {locationName.division ? (
               <p>
                 Division Name:{" "}
                 <span className={`text-sm`}>{locationName.division}</span>
@@ -68,23 +87,5 @@ export default function MapBox() {
               </p>
             ) : (
               <></>
-            )}
-          </div>
-        )}
-      </div>
-      <div className="flex-grow">
-        <MapContainer
-          center={[23.885, 90.3563]}
-          zoom={6.5}
-          style={{ height: "100%", width: "100%" }}
-        >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          />
-          <MapClickHandler />
-        </MapContainer>
-      </div>
-    </section>
-  );
+            )} */
 }
