@@ -11,10 +11,12 @@ export default function DataBox() {
     data: division,
   });
   useEffect(() => {
-    // console.log(query);
+    console.log(query);
   }, [query]);
   return (
-    <section className={`flex flex-col items-center justify-start gap-y-5`}>
+    <section
+      className={`flex flex-col items-center justify-start gap-y-5 px-12`}
+    >
       <h1 className="text-3xl font-bold font-serif text-blue-700 my-3">
         Air Quality Index
       </h1>
@@ -23,9 +25,13 @@ export default function DataBox() {
         <SelectLocation query={query} setQuery={setQuery} data={query.data} />
         <SelectYear query={query} setQuery={setQuery} />
       </div>
-      <div className={`w-full px-12`}>
-        <DataTable />
-      </div>
+      {query?.location ? (
+        <div className={`w-full`}>
+          <DataTable data={query?.location} />
+        </div>
+      ) : (
+        <></>
+      )}
     </section>
   );
 }
