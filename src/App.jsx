@@ -1,8 +1,7 @@
-// import './App.css'
-
 import { useEffect } from "react";
 import DataBox from "./components/Data/DataBox";
 import MapBox from "./components/Map/MapBox";
+import 'semantic-ui-css/semantic.min.css'
 
 function App() {
   /* For Preline Dropdown */
