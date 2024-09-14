@@ -3,7 +3,7 @@ import SelectYear from "./SelectYear";
 import SelectLocation from "./SelectLocation";
 import DataTable from "./DataTable";
 import { useEffect, useState } from "react";
-import { division, district } from "../JSON/data";
+import { division } from "../JSON/data";
 
 export default function DataBox() {
   const [query, setQuery] = useState({
@@ -27,7 +27,7 @@ export default function DataBox() {
       </div>
       {query?.location ? (
         <div className={`w-full`}>
-          <DataTable data={query?.location} />
+          <DataTable data={query} />
         </div>
       ) : (
         <></>
