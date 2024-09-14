@@ -13,7 +13,7 @@ export default function SideBarMenu() {
     console.log(query);
   }, [query]);
   return (
-    <section className={`lg:md:w-1/3 border-r p-5 space-y-5 bg-white`}>
+    <section className={`lg:md:w-[25%] border-r p-5 space-y-5 bg-white`}>
       <Calendar query={query} setQuery={setQuery} />
       <div>
         <div className="hs-accordion-group">

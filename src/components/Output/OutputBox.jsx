@@ -20,7 +20,7 @@ export default function OutputBox() {
       className={`lg:md:w-1/2 flex flex-col items-center justify-between pt-5 `}
     >
       <AllDataChart data={model} />
-      <section>Charts</section>
+      <section></section>
     </div>
   );
 }

@@ -40,7 +40,7 @@ export default function MapBox() {
     return null;
   };
   return (
-    <section className={`w-full flex flex-col pl-3.5 py-2.5 bg-white`}>
+    <section className={`w-full flex flex-col px-3.5 py-2.5 bg-white`}>
       <div className="flex-grow relative">
         <div
           className={`h-fit w-full px-2 py-3 space-y-2 absolute z-[1200] top-2`}
@@ -48,7 +48,7 @@ export default function MapBox() {
           <SearchBox />
         </div>
         <MapContainer
-          center={[23.885, 90.3563]}
+          center={[24.0, 90.3563]}
           zoom={7}
           style={{ height: "100%", width: "100%" }}
         >
