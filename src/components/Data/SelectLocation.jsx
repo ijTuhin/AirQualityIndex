@@ -8,7 +8,7 @@ export default function SelectLocation({ query, setQuery, data }) {
   }));
   return (
     <Dropdown
-      className={`h-[2.895rem] flex items-center`}
+      className={`flex items-center active:outline-none`}
       onChange={(e) => {
         setQuery({
           ...query,

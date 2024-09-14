@@ -40,14 +40,14 @@ export default function MapBox() {
     return null;
   };
   return (
-    <section className={`flex flex-col`}>
+    <section className={`w-full flex flex-col px-3.5`}>
       <div className={`h-fit px-2 py-3 space-y-2`}>
         <SearchBox />
       </div>
       <div className="flex-grow">
         <MapContainer
           center={[23.885, 90.3563]}
-          zoom={6.5}
+          zoom={7}
           style={{ height: "100%", width: "100%" }}
         >
           <TileLayer
@@ -62,30 +62,4 @@ export default function MapBox() {
       </div>
     </section>
   );
-}
-{
-  /* {locationName.division ? (
-              <p>
-                Division Name:{" "}
-                <span className={`text-sm`}>{locationName.division}</span>
-              </p>
-            ) : (
-              <></>
-            )}
-            {locationName.district ? (
-              <p>
-                Disctrict Name:{" "}
-                <span className={`text-sm`}>{locationName.district}</span>
-              </p>
-            ) : (
-              <></>
-            )}
-            {locationName.district ? (
-              <p>
-                Town/City Name:{" "}
-                <span className={`text-sm`}>{locationName.town}</span>
-              </p>
-            ) : (
-              <></>
-            )} */
 }

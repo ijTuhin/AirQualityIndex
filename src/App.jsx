@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import DataBox from "./components/Data/DataBox";
 import MapBox from "./components/Map/MapBox";
 import 'semantic-ui-css/semantic.min.css'
+import SideBarMenu from "./components/Data/SideBarMenu";
 
 function App() {
   /* For Preline Dropdown */
@@ -15,11 +16,12 @@ function App() {
   }, []);
   /* ===================== */
   return (
-    <main className={`w-screen lg:h-screen flex justify-center p-10`}>
+    <main className={`w-screen lg:h-screen flex justify-center py-3.5`}>
       <div
-        className={`w-full h-full grid md:lg:grid-cols-2 grid-cols-1 gap-x-8`}
+        className={`w-full h-full grid md:lg:flex grid-cols-1`}
       >
-        <DataBox />
+        {/* <DataBox /> */}
+        <SideBarMenu/>
         <MapBox />
       </div>
     </main>
