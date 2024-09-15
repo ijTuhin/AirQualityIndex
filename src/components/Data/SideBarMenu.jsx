@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import SelectLocation from "./SelectLocation";
-import { division, district } from "../JSON/data";
+import { division, district, years, months } from "../JSON/data";
 import Calendar from "./Calendar";
 import { MdChevronRight } from "react-icons/md";
 
 export default function SideBarMenu() {
+  const [region, setRegion] = useState(division);
   const [query, setQuery] = useState({
-    type: 1,
-    data: division,
+    type: 0,
+    year: years[0],
+    month: months[0],
   });
   useEffect(() => {
     console.log(query);
@@ -106,11 +108,11 @@ export default function SideBarMenu() {
               aria-labelledby="hs-basic-no-arrow-heading-two"
             >
               <div className={`h-96`}>
-                <SelectLocation
+                {/* <SelectLocation
                   query={query}
                   setQuery={setQuery}
                   data={query.data}
-                />
+                /> */}
               </div>
             </div>
           </div>

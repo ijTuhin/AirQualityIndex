@@ -1,23 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
-import { years } from "../JSON/data";
+import { years, months } from "../JSON/data";
 
 export default function Calendar({ query, setQuery }) {
   const [year, setYear] = useState(0);
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
   return (
     <div className={`border`}>
       <h1
@@ -30,6 +16,7 @@ export default function Calendar({ query, setQuery }) {
           <button
             onClick={() => {
               if (year !== 0) setYear(year - 1);
+              setQuery({ ...query, year: years[year] });
             }}
           >
             <FaCaretLeft />
@@ -38,6 +25,7 @@ export default function Calendar({ query, setQuery }) {
           <button
             onClick={() => {
               if (year + 1 < years.length) setYear(year + 1);
+              setQuery({ ...query, year: years[year] });
             }}
           >
             <FaCaretRight />
@@ -49,11 +37,12 @@ export default function Calendar({ query, setQuery }) {
               <button
                 key={index}
                 onClick={() => {
-                //   setYear(i);
-                //   setQuery({ ...query, year: i });
+                  setQuery({ ...query, month: i });
                 }}
-                className={`px-1.5 py-3.5 text-xs uppercase bg-blue-gray-50 hover:bg-blue-gray-100 border rounded-sm ${
-                  year === index ? "bg-blue-gray-100" : "bg-blue-gray-50"
+                className={`px-1.5 py-3.5 text-xs uppercase hover:bg-blue-gray-100 border rounded-sm ${
+                  query?.month === i
+                    ? "bg-blue-gray-100 m-0.5 text-[0.7rem]"
+                    : "bg-blue-gray-50"
                 }`}
               >
                 {i}
