@@ -1,10 +1,10 @@
 import { Dropdown } from "semantic-ui-react";
 
-export default function SelectLocation({ query, setQuery, data }) {
-  const options = data.map((val, index) => ({
+export default function SelectLocation({ query, setQuery, region }) {
+  const options = region?.data?.map((val, index) => ({
     key: index,
-    text: query?.type ? val.division : val.district,
-    value: query?.type ? val.division : val.district,
+    text: region?.type === 0 ? val.division : val.district,
+    value: region?.type === 0 ? val.division : val.district,
   }));
   return (
     <Dropdown
@@ -13,10 +13,10 @@ export default function SelectLocation({ query, setQuery, data }) {
         setQuery({
           ...query,
           location: e.target.textContent,
-          coordinates: data.filter(
+          coordinates: region?.data?.filter(
             (i) =>
-              (i.division === e.target.textContent && query?.type) ||
-              (query?.type === 0 && i.district === e.target.textContent)
+              (i.division === e.target.textContent && region?.type === 0) ||
+              (region?.type === 1 && i.district === e.target.textContent)
           )[0].coordinates,
         });
       }}

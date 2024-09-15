@@ -30,7 +30,7 @@ function App() {
         {/* <DataBox /> */}
         <SideBarMenu />
         <MapBox />
-        <OutputBox />
+        {/* <OutputBox /> Use Context to toggle ouput view by state control */}
       </div>
     </main>
   );

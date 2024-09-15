@@ -4,7 +4,7 @@ import ReactApexChart from "react-apexcharts";
 export default function AllDataChart({ data }) {
   const val = data.map((i) => parseInt(i.value));
   const name = data.map((i) => i.name);
-  console.log(name);
+  // console.log(name);
   const [series, setSeries] = useState(val);
   const [options, setOptions] = useState({
     chart: {
