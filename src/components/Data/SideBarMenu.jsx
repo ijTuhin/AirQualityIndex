@@ -3,18 +3,16 @@ import SelectLocation from "./SelectLocation";
 import { division, district, years, months } from "../JSON/data";
 import Calendar from "./Calendar";
 import { MdChevronRight } from "react-icons/md";
+import { useContextData } from "../Context/UseContext";
 
 export default function SideBarMenu() {
+  const { query, setQuery } = useContextData();
   const [region, setRegion] = useState({
     data: division,
     type: null,
   });
-  const [query, setQuery] = useState({
-    year: years[0],
-    month: months[0],
-  });
   useEffect(() => {
-    // console.log(query);
+    console.log(query);
   }, [query, region]);
   const area = [
     {
@@ -32,7 +30,7 @@ export default function SideBarMenu() {
   ];
   return (
     <section className={`lg:md:w-[25%] border-r p-5 space-y-5 bg-white`}>
-      <Calendar query={query} setQuery={setQuery} />
+      <Calendar />
       <div>
         <div className="hs-accordion-group" data-hs-accordion-always-open="">
           {/* Select Area Type */}
@@ -82,50 +80,6 @@ export default function SideBarMenu() {
                     </div>
                   );
                 })}
-                {/* <div className="flex pb-1.5">
-                  <input
-                    type="radio"
-                    name="hs-radio-vertical-group"
-                    className="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                    id="hs-radio-vertical-group-2"
-                  />
-                  <label
-                    htmlFor="hs-radio-vertical-group-2"
-                    className="text-sm text-gray-500 ms-2 dark:text-neutral-400"
-                  >
-                    Division
-                  </label>
-                </div>
-
-                <div className="flex py-1.5">
-                  <input
-                    type="radio"
-                    name="hs-radio-vertical-group"
-                    className="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                    id="hs-radio-vertical-group-3"
-                  />
-                  <label
-                    htmlFor="hs-radio-vertical-group-3"
-                    className="text-sm text-gray-500 ms-2 dark:text-neutral-400"
-                  >
-                    District
-                  </label>
-                </div>
-
-                <div className="flex pt-1.5 pb-2.5">
-                  <input
-                    type="radio"
-                    name="hs-radio-vertical-group"
-                    className="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                    id="hs-radio-vertical-group-3"
-                  />
-                  <label
-                    htmlFor="hs-radio-vertical-group-4"
-                    className="text-sm text-gray-500 ms-2 dark:text-neutral-400"
-                  >
-                    Upazilla
-                  </label>
-                </div> */}
               </section>
             </div>
           </div>
@@ -153,11 +107,7 @@ export default function SideBarMenu() {
             >
               <div className={`h-[19rem]`}>
                 {region?.type !== null ? (
-                  <SelectLocation
-                    query={query}
-                    setQuery={setQuery}
-                    region={region}
-                  />
+                  <SelectLocation region={region} />
                 ) : (
                   <></>
                 )}

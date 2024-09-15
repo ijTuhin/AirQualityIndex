@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 import { years, months } from "../JSON/data";
+import { useContextData } from "../Context/UseContext";
 
-export default function Calendar({ query, setQuery }) {
+export default function Calendar() {
+  const { query, setQuery } = useContextData();
   const [year, setYear] = useState(0);
   return (
     <div className={`border`}>

@@ -2,8 +2,10 @@ import { MapContainer, TileLayer, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useState } from "react";
 import SearchBox from "./SearchBox";
+import { useContextData } from "../Context/UseContext";
 
 export default function MapBox() {
+  const { query } = useContextData();
   const [locationName, setLocationName] = useState(null);
   const getLocationName = async (lat, lon) => {
     try {
@@ -48,7 +50,7 @@ export default function MapBox() {
           <SearchBox />
         </div>
         <MapContainer
-          center={[24.0, 90.3563]}
+          center={query.coordinates} /* 23.1793, 91.9882 */
           zoom={7}
           style={{ height: "100%", width: "100%" }}
         >
