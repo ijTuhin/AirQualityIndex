@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { months, years } from "../JSON/data";
 
 const Context = createContext();
@@ -8,6 +8,9 @@ const ProviderComponent = ({ children }) => {
     month: months[0],
     coordinates: [24.0, 90.3563],
   });
+  useEffect(() => {
+    console.log(query);
+  }, [query]);
   return (
     <Context.Provider value={{ query, setQuery }}>{children}</Context.Provider>
   );

@@ -7,6 +7,7 @@ import { useContextData } from "../Context/UseContext";
 export default function MapBox() {
   const { query } = useContextData();
   const [locationName, setLocationName] = useState(null);
+  console.log(query.location);
   const getLocationName = async (lat, lon) => {
     try {
       console.log(lat, lon);
@@ -62,7 +63,13 @@ export default function MapBox() {
         </MapContainer>
       </div>
       <div className={`p-3 bg-amber-100 text-sm text-gray-700`}>
-        {!locationName ? <></> : <p>Location: {locationName.address}</p>}
+        {locationName ? (
+          <p>Location: {locationName}</p>
+        ) : query.location ? (
+          <p>Location: {query.location}</p>
+        ) : (
+          <></>
+        )}
       </div>
     </section>
   );

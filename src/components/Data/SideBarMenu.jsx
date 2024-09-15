@@ -12,7 +12,7 @@ export default function SideBarMenu() {
     type: null,
   });
   useEffect(() => {
-    console.log(query);
+    // console.log(query);
   }, [query, region]);
   const area = [
     {
