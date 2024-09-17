@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { CiCircleQuestion } from "react-icons/ci";
-import { FaRegQuestionCircle } from "react-icons/fa";
 import { BsQuestionCircle } from "react-icons/bs";
 import {
   Button,

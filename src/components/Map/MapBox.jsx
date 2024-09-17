@@ -47,7 +47,7 @@ export default function MapBox() {
       <div className="flex-grow relative">
         <div className={`w-full flex justify-center`}>
           <div
-            className={`h-fit w-1/2 px-2 py-3 space-y-2 absolute z-[1200] top-2`}
+            className={`h-fit lg:md:w-[60%] w-1/2 px-2 py-3 space-y-2 absolute z-[1200] top-2`}
           >
             <SearchBox />
           </div>
