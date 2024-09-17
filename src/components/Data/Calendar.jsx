@@ -7,13 +7,13 @@ export default function Calendar() {
   const { query, setQuery } = useContextData();
   const [year, setYear] = useState(0);
   return (
-    <div className={`border`}>
-      <h1
+    <div className={`bg-white shadow-lg`}>
+      {/* <h1
         className={`text-center py-2 border bg-blue-gray-300 text-gray-100 text-lg`}
       >
         Calendar
-      </h1>
-      <section className="p-1">
+      </h1> */}
+      <section className="p-3.5">
         <div className={`flex justify-between items-center py-2`}>
           <button
             onClick={() => {
@@ -41,10 +41,10 @@ export default function Calendar() {
                 onClick={() => {
                   setQuery({ ...query, month: i });
                 }}
-                className={`px-1.5 py-3.5 text-xs uppercase hover:bg-blue-gray-100 border rounded-sm ${
+                className={`px-1.5 py-3.5 text-[0.65rem] uppercase hover:bg-[#ffd75e] text-gray-900 rounded-lg ${
                   query?.month === i
-                    ? "bg-blue-gray-100 m-0.5 text-[0.7rem]"
-                    : "bg-blue-gray-50"
+                    ? "bg-[#ffdf7e] rounded-lg m-0.5 text-[0.7rem]"
+                    : "bg-[#e6eaef]"
                 }`}
               >
                 {i}
