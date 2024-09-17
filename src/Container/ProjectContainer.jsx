@@ -1,5 +1,5 @@
 import React from "react";
-import SideBarMenu from "../components/Data/SideBarMenu";
+import SideBarMenu from "../components/Query/SideBarMenu";
 import MapBox from "../components/Map/MapBox";
 import AboutUsModal from "../components/About/AboutUsModal";
 import { useContextData } from "../components/Context/UseContext";

@@ -29,7 +29,7 @@ export default function SideBarMenu() {
     },
   ];
   return (
-    <section className={`lg:md:w-[20%] bg-slate-950/95`}>
+    <section className={`${query?.location ? 'lg:md:w-[27%]' : "lg:md:w-[18%]"} bg-slate-950/95`}>
       <Calendar />
       <div className={`p-5`}>
         <div className="hs-accordion-group" data-hs-accordion-always-open="">

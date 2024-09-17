@@ -7,6 +7,7 @@ const ProviderComponent = ({ children }) => {
     year: years[0],
     month: months[0],
     coordinates: [24.0, 90.3563],
+    location: 1
   });
   useEffect(() => {
     console.log(query);
