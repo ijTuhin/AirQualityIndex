@@ -7,10 +7,10 @@ import { useContextData } from "../Context/UseContext";
 export default function MapBox() {
   const { query } = useContextData();
   const [locationName, setLocationName] = useState(null);
-  console.log(query.location);
+  // console.log(query.location);
   const getLocationName = async (lat, lon) => {
     try {
-      console.log(lat, lon);
+      // console.log(lat, lon);
       const response = await fetch(
         `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`
       );
@@ -22,7 +22,7 @@ export default function MapBox() {
           town: data.address.town,
           address: data.display_name,
         });
-        console.log(data);
+        console.log(data.display_name);
       } else {
         setLocationName("Location not found");
       }
@@ -64,7 +64,7 @@ export default function MapBox() {
       </div>
       <div className={`p-3 bg-amber-100 text-sm text-gray-700`}>
         {locationName ? (
-          <p>Location: {locationName}</p>
+          <p>Location: {locationName.address}</p>
         ) : query.location ? (
           <p>Location: {query.location}</p>
         ) : (
