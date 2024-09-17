@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import SelectLocation from "./SelectLocation";
-import { division, district, years, months } from "../JSON/data";
+import { division, district, years } from "../JSON/data";
 import Calendar from "./Calendar";
 import { MdChevronRight } from "react-icons/md";
 import { useContextData } from "../Context/UseContext";
@@ -29,9 +29,9 @@ export default function SideBarMenu() {
     },
   ];
   return (
-    <section className={`lg:md:w-[20%] bg-[white] text-[#2C3E50]`}>
+    <section className={`lg:md:w-[20%] bg-slate-950/95`}>
       <Calendar />
-      <div className={`p-5 border-r`}>
+      <div className={`p-5`}>
         <div className="hs-accordion-group" data-hs-accordion-always-open="">
           {/* Select Area Type */}
           <div
@@ -39,7 +39,7 @@ export default function SideBarMenu() {
             id="hs-basic-no-arrow-heading-one"
           >
             <button
-              className="hs-accordion-toggle py-3 inline-flex items-center justify-between gap-x-3 w-full font-semibold text-start text-gray-800 hover:text-gray-500 focus:outline-none focus:text-gray-500 rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400"
+              className="hs-accordion-toggle py-3 inline-flex items-center justify-between gap-x-3 w-full font-semibold text-start text-gray-600 hover:text-gray-500 focus:outline-none focus:text-gray-500 rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400"
               aria-expanded="true"
               aria-controls="hs-basic-no-arrow-collapse-one"
             >
@@ -68,7 +68,7 @@ export default function SideBarMenu() {
                         }
                         type="radio"
                         name="hs-radio-vertical-group"
-                        className="shrink-0 mt-0.5 border-gray-200 rounded-full text-[#87CEEB] focus:ring-[#87CEEB] disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-[#87CEEB] dark:checked:border-[#87CEEB] dark:focus:ring-offset-gray-800"
+                        className="shrink-0 mt-0.5 border-gray-200 rounded-full text-[#87CEEB] focus:ring-[#87CEEB] disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-[#87CEEB] dark:checked:border-[#87CEEB] dark:focus:ring-offset-gray-600"
                         id={val.id}
                       />
                       <label
@@ -83,11 +83,10 @@ export default function SideBarMenu() {
               </section>
             </div>
           </div>
-          <hr />
           {/* Select Location */}
           <div className="hs-accordion" id="hs-basic-no-arrow-heading-two">
             <button
-              className={`hs-accordion-toggle hs-accordion-active:text-gray-700 py-3 inline-flex items-center justify-between gap-x-3 w-full font-semibold text-start text-gray-800 hover:text-gray-500 focus:outline-none focus:text-gray-500 rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 ${
+              className={`hs-accordion-toggle hs-accordion-active:text-gray-700 py-3 inline-flex items-center justify-between gap-x-3 w-full font-semibold text-start text-gray-600 hover:text-gray-500 focus:outline-none focus:text-gray-500 rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 ${
                 region?.type === null ? "cursor-not-allowed" : ""
               }`}
               aria-expanded="false"

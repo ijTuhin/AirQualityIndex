@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.playwrite-cu-ba {
+  font-family: "Dancing Script", cursive /* "Sofadi One", system-ui */;
+  /* font-optical-sizing: auto; */
+  /* font-weight: 500; */
+  font-style: normal;
+}
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
