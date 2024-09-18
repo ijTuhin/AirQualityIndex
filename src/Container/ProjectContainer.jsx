@@ -3,7 +3,7 @@ import SideBarMenu from "../components/Query/SideBarMenu";
 import MapBox from "../components/Map/MapBox";
 import AboutUsModal from "../components/About/AboutUsModal";
 import { useContextData } from "../components/Context/UseContext";
-import ResultBar from "../components/Output/ResultBar";
+import ResultSection from "../components/Output/ResultSection";
 
 export default function ProjectContainer() {
   const { query, setQuery } = useContextData();
@@ -23,7 +23,7 @@ export default function ProjectContainer() {
         {/* <DataBox /> */}
         <SideBarMenu />
         <MapBox />
-        {query?.location ? <ResultBar/> : <></>}
+        {query?.location ? <ResultSection /> : <></>}
       </div>
     </main>
   );

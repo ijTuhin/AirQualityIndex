@@ -4,7 +4,7 @@ import MonthSummaryCharts from "./MonthSummaryCharts";
 import ObservedChart from "./ObservedChart";
 import ResultHeading from "./ResultHeading";
 
-export default function ResultBar() {
+export default function ResultSection() {
   const model = [
     {
       name: "cnn",
