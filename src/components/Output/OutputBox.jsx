@@ -1,5 +1,6 @@
 import AllDataChart from "./AllDataChart";
-import MyApexCharts from "./MyApexCharts";
+import MonthSummaryCharts from "./MonthSummaryCharts";
+import ResultHeading from "./ResultHeading";
 
 export default function OutputBox() {
   const model = [
@@ -18,11 +19,13 @@ export default function OutputBox() {
   ];
   return (
     <div
-      className={`lg:md:w-[100%] flex flex-col items-center justify-between pt-5 `}
+      className={`lg:md:w-[100%] bg-slate-950 flex flex-col items-center justify-between pt-5 relative overflow-hidden`}
     >
+      <ResultHeading />
       {/* <AllDataChart data={model} /> */}
-      <MyApexCharts/>
-      <section></section>
+      <section className={`w-full absolute bottom-0`}>
+        <MonthSummaryCharts />
+      </section>
     </div>
   );
 }

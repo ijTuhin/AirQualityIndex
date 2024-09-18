@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
 import ApexCharts from "react-apexcharts";
-// import styles from "./charts.module.css"
-const MyApexCharts = () => {
+const MonthSummaryCharts = () => {
   const options = {
     series: [
       {
-        name: "Income",
-        type: "column",
+        name: "LSTM",
+        type: "bar",
+        color: "#7c3aed",
         data: [
           1.4, 2, 2.5, 1.5, 2.5, 2.8, 3.8, 4.6, 60, 61, 65, 45, 89, 20, 13, 66,
           87, 90, 91, 68, 67, 34, 23, 22, 21, 67, 87, 99, 100, 44,
@@ -14,15 +13,26 @@ const MyApexCharts = () => {
       },
       {
         name: "Cashflow",
-        type: "column",
+        type: "bar",
+        color: "#facc15",
         data: [
           1.1, 3, 3.1, 4, 4.1, 4.9, 6.5, 8.5, 60, 61, 65, 45, 89, 20, 13, 66,
           87, 90, 91, 68, 67, 34, 23, 22, 21, 67, 87, 99, 100, 44,
         ],
       },
       {
-        name: "Revenue",
+        name: "observed",
         type: "line",
+        color: "#f97316",
+        data: [
+          20, 29, 37, 36, 44, 45, 50, 58, 60, 61, 65, 45, 89, 20, 13, 66, 87,
+          90, 91, 68, 67, 34, 23, 22, 21, 67, 87, 99, 100, 44,
+        ],
+      },
+      {
+        name: "CNN",
+        type: "bar",
+        color: "#ec4899",
         data: [
           20, 29, 37, 36, 44, 45, 50, 58, 60, 61, 65, 45, 89, 20, 13, 66, 87,
           90, 91, 68, 67, 34, 23, 22, 21, 67, 87, 99, 100, 44,
@@ -30,26 +40,38 @@ const MyApexCharts = () => {
       },
     ],
     chart: {
-      height: 350,
       type: "line",
       stacked: false,
+      toolbar: {
+        tools: {
+          download: false,
+          zoom: false,
+          zoomin: false,
+          zoomout: false,
+          pan: false,
+          reset: false,
+        },
+      },
     },
     dataLabels: {
       enabled: false,
     },
     stroke: {
-      width: [5, 5, 3],
+      width: [5, 5, 5],
     },
-    // title: {
-    //   text: "XYZ - Stock Analysis (2009 - 2016)",
-    //   align: "left",
-    //   offsetX: 150,
-    // },
     xaxis: {
       categories: [
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
         21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
       ],
+      labels: {
+        show: true,
+        // rotate: -45,
+        // rotateAlways: true,
+        style: {
+          colors: "#6b7280",
+        },
+      },
     },
     yaxis: [
       {
@@ -59,19 +81,13 @@ const MyApexCharts = () => {
         },
         axisBorder: {
           show: true,
-          color: "#008FFB",
+          color: "yellow",
         },
         labels: {
           style: {
-            colors: "#008FFB",
+            colors: "orange",
           },
         },
-        // title: {
-        //   text: "Income (thousand crores)",
-        //   style: {
-        //     color: "#008FFB",
-        //   },
-        // },
         tooltip: {
           enabled: true,
         },
@@ -85,32 +101,22 @@ const MyApexCharts = () => {
         offsetX: 60,
       },
     },
-    // legend: {
-    //   horizontalAlign: "left",
-    //   offsetX: 40,
-    // },
+    legend: {
+      horizontalAlign: "left",
+      offsetX: 40,
+    },
   };
 
   return (
-    <div className={`w-full grid grid-cols-1`}>
-      {/* <div id="line-adwords">
-        <ApexCharts options={lineOptions} series={lineOptions.series} type="line" height={328} />
-      </div> */}
-
-      {/* <div id="barchart">
-        <ApexCharts options={barOptions} series={barOptions.series} type="bar" height={380} />
-      </div> */}
-
-      <div id="areachart">
-        <ApexCharts
-          options={options}
-          series={options.series}
-          type="area"
-          height={380}
-        />
-      </div>
+    <div id="line-adwords">
+      <ApexCharts
+        options={options}
+        series={options.series}
+        type="line"
+        height={250}
+      />
     </div>
   );
 };
 
-export default MyApexCharts;
+export default MonthSummaryCharts;
