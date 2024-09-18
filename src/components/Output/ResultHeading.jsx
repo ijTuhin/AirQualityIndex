@@ -5,7 +5,7 @@ export default function ResultHeading() {
   return (
     <div className={`flex items-center justify-between w-full px-2`}>
       <div className={`flex items-end`}>
-        <p className={`text-5xl`}>
+        <p className={`text-5xl text-green-600`}>
           <FaLocationDot />
         </p>
         <p className={`text-sm w-56`}>
