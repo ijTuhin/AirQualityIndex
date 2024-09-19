@@ -15,14 +15,11 @@ export default function SelectLocation({ region }) {
         setQuery({
           ...query,
           location: e.target.textContent,
-          coordinates: region?.data
-            ?.filter(
-              (i) =>
-                (i.division === e.target.textContent && region?.type === 0) ||
-                (region?.type === 1 && i.district === e.target.textContent)
-            )[0]
-            .coordinates.split(", ")
-            .map((i) => parseFloat(i)),
+          coordinates: region?.data?.filter(
+            (i) =>
+              (i.division === e.target.textContent && region?.type === 0) ||
+              (region?.type === 1 && i.district === e.target.textContent)
+          )[0].coordinates,
         });
       }}
       placeholder="Location"

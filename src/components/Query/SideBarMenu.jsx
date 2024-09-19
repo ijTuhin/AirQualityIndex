@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import SelectLocation from "./SelectLocation";
 import { division, district, years } from "../JSON/data";
 import Calendar from "./Calendar";
@@ -7,9 +7,9 @@ import { useContextData } from "../Context/UseContext";
 
 export default function SideBarMenu() {
   const { query, setQuery, region, setRegion } = useContextData();
-  useEffect(() => {
-    // console.log(query);
-  }, [query, region]);
+  // useEffect(() => {
+  //   // console.log(query);
+  // }, [query, region]);
   const area = [
     {
       area: "division",

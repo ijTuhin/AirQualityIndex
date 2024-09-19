@@ -15,6 +15,7 @@ import L from "leaflet";
 // Fixed marker icon not showing issue in Leaflet
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
+import { division } from "../JSON/data";
 
 // Fixed default marker icons in Leaflet for React
 let DefaultIcon = L.icon({
@@ -25,9 +26,8 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 export default function MapBox() {
   const { query, setQuery } = useContextData();
-  const [locationName, setLocationName] = useState(null);
-  // state for latitude and longitude for the marker location
-  const position = [23.685, 90.3563];
+  const [position, setPosition] = useState(division.map((i) => i.coordinates));
+  console.log(position);
   const getLocationName = async (lat, lon) => {
     try {
       /* Make API request to get map location using lat long */
@@ -36,19 +36,12 @@ export default function MapBox() {
       );
       const data = await response.json();
       if (data && data.display_name) {
-        setLocationName({
-          district: data.address.state_district,
-          division: data.address.state,
-          town: data.address.town,
-          address: data.display_name,
-        });
         setQuery({ ...query, location: data.display_name });
       } else {
-        setLocationName("Location not found");
+        // setLocationName("Location not found");
       }
     } catch (error) {
       console.error("Error fetching location name:", error);
-      setLocationName("Error fetching location");
     }
   };
 
@@ -58,6 +51,7 @@ export default function MapBox() {
       click(e) {
         const { lat, lng } = e.latlng;
         getLocationName(lat, lng); // Fetch the location name on click
+        console.log(lat, lng);
       },
     });
     return null;
@@ -86,21 +80,26 @@ export default function MapBox() {
           />
           <MapClickHandler />
           {/* Marker on the given location */}
-          <Marker
-            position={position}
-            eventHandlers={{
-              mouseover: (event) => event.target.openPopup(),
-              click: (e) => {
-                const { lat, lng } = e.latlng;
-                getLocationName(lat, lng); // Fetch the location name on click
-              },
-            }}
-          >
-            <Popup>
-              A marker at the given location! <br /> Latitude: {position[0]},
-              Longitude: {position[1]}.
-            </Popup>
-          </Marker>
+          {position.map((i, index) => {
+            return (
+              <Marker
+                key={index}
+                position={i}
+                eventHandlers={{
+                  mouseover: (event) => event.target.openPopup(),
+                  click: (e) => {
+                    const { lat, lng } = e.latlng;
+                    getLocationName(lat, lng); // Fetch the location name on click
+                  },
+                }}
+              >
+                <Popup>
+                  A marker at the given location! <br /> Latitude: {i[0]},
+                  Longitude: {i[1]}.
+                </Popup>
+              </Marker>
+            );
+          })}
         </MapContainer>
       </div>
     </section>

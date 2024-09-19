@@ -1,12 +1,11 @@
-import React from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { useContextData } from "../Context/UseContext";
 
 export default function ResultHeading() {
-  const { query, setQuery } = useContextData();
+  const { query } = useContextData();
   return (
-    <div className={`flex items-center justify-between w-full px-2`}>
-      <div className={`flex items-end`}>
+    <div className={`flex items-start justify-between w-full px-2`}>
+      <div className={`flex items-start gap-x-2`}>
         <p className={`text-5xl text-green-600`}>
           <FaLocationDot />
         </p>
