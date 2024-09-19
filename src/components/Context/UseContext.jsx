@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { months, years } from "../JSON/data";
+import { division, months, years } from "../JSON/data";
 
 const Context = createContext();
 const ProviderComponent = ({ children }) => {
@@ -7,13 +7,16 @@ const ProviderComponent = ({ children }) => {
     year: years[0],
     month: months[0],
     coordinates: [24.0, 90.3563],
-    location: 1
+  });
+  const [region, setRegion] = useState({
+    data: division,
+    type: null,
   });
   useEffect(() => {
     console.log(query);
   }, [query]);
   return (
-    <Context.Provider value={{ query, setQuery }}>{children}</Context.Provider>
+    <Context.Provider value={{ query, setQuery, region, setRegion }}>{children}</Context.Provider>
   );
 };
 const useContextData = () => {

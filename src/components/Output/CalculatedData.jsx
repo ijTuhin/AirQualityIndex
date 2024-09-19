@@ -1,6 +1,4 @@
 export default function CalculatedData({ id, data }) {
-  console.log(data, id);
-  //   let color = ""
   return (
     <div
       className={`bg-gray-200 py-3.5 px-5 rounded-md flex gap-x-5 justify-between items-start`}

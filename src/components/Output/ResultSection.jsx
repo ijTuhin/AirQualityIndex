@@ -1,4 +1,3 @@
-import AllDataChart from "./AllDataChart";
 import CalculatedData from "./CalculatedData";
 import MonthSummaryCharts from "./MonthSummaryCharts";
 import ObservedChart from "./ObservedChart";

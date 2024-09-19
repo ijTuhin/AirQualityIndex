@@ -1,16 +1,36 @@
-import { MapContainer, TileLayer, useMapEvents } from "react-leaflet";
+import {
+  MapContainer,
+  Marker,
+  Popup,
+  TileLayer,
+  useMapEvents,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useState } from "react";
 import SearchBox from "./SearchBox";
 import { useContextData } from "../Context/UseContext";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+
+// Fixed marker icon not showing issue in Leaflet
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
+
+// Fixed default marker icons in Leaflet for React
+let DefaultIcon = L.icon({
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
+L.Marker.prototype.options.icon = DefaultIcon;
 
 export default function MapBox() {
-  const { query } = useContextData();
+  const { query, setQuery } = useContextData();
   const [locationName, setLocationName] = useState(null);
-  // console.log(query.location);
+  // state for latitude and longitude for the marker location
+  const position = [23.685, 90.3563];
   const getLocationName = async (lat, lon) => {
     try {
-      // console.log(lat, lon);
+      /* Make API request to get map location using lat long */
       const response = await fetch(
         `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`
       );
@@ -22,7 +42,7 @@ export default function MapBox() {
           town: data.address.town,
           address: data.display_name,
         });
-        console.log(data.display_name);
+        setQuery({ ...query, location: data.display_name });
       } else {
         setLocationName("Location not found");
       }
@@ -42,6 +62,7 @@ export default function MapBox() {
     });
     return null;
   };
+
   return (
     <section className={`w-full flex flex-col bg-white`}>
       <div className="flex-grow relative">
@@ -64,16 +85,23 @@ export default function MapBox() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
           <MapClickHandler />
+          {/* Marker on the given location */}
+          <Marker
+            position={position}
+            eventHandlers={{
+              mouseover: (event) => event.target.openPopup(),
+              click: (e) => {
+                const { lat, lng } = e.latlng;
+                getLocationName(lat, lng); // Fetch the location name on click
+              },
+            }}
+          >
+            <Popup>
+              A marker at the given location! <br /> Latitude: {position[0]},
+              Longitude: {position[1]}.
+            </Popup>
+          </Marker>
         </MapContainer>
-      </div>
-      <div className={`p-3 bg-amber-100 text-sm text-gray-700`}>
-        {locationName ? (
-          <p>Location: {locationName.address}</p>
-        ) : query.location ? (
-          <p>Location: {query.location}</p>
-        ) : (
-          <></>
-        )}
       </div>
     </section>
   );

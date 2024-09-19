@@ -6,11 +6,7 @@ import { MdChevronRight } from "react-icons/md";
 import { useContextData } from "../Context/UseContext";
 
 export default function SideBarMenu() {
-  const { query, setQuery } = useContextData();
-  const [region, setRegion] = useState({
-    data: division,
-    type: null,
-  });
+  const { query, setQuery, region, setRegion } = useContextData();
   useEffect(() => {
     // console.log(query);
   }, [query, region]);
