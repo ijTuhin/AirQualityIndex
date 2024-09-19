@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, useMapEvents } from "react-leaflet";
+import { MapContainer, TileLayer, useMap, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import SearchBox from "./SearchBox";
 import LocationPointer from "./LocationPointer";
@@ -8,6 +8,7 @@ import L from "leaflet";
 // Fixed marker icon not showing issue in Leaflet
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
+import { useState } from "react";
 
 // Fixed default marker icons in Leaflet for React
 let DefaultIcon = L.icon({
@@ -17,7 +18,9 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 export default function Map() {
-  const { query, setQuery } = useContextData();
+  const { query, setQuery, position, setPosition } = useContextData();
+  const [mapViewPosition, setMapViewPosition] = useState([23.8793, 93.3178]);
+  const [center, setCenter] = useState(null);
   const getLocationName = async (lat, lon) => {
     try {
       /* Make API request to get map location using lat long */
@@ -48,15 +51,27 @@ export default function Map() {
     return null;
   };
 
+  // Component to update the map view
+  const SetMapView = ({ center }) => {
+    const map = useMap();
+    map.setView(center, map.getZoom());
+
+    return null;
+  };
+
   return (
     <section className={`w-full flex flex-col bg-white`}>
       <div className="flex-grow relative">
-        <SearchBox />
+        <SearchBox
+          setMapViewPosition={setMapViewPosition}
+          setCenter={setCenter}
+        />
         <MapContainer
-          center={[23.8793, 93.3178]}
+          center={mapViewPosition}
           zoom={7}
           style={{ height: "100%", width: "100%" }}
         >
+          {center ? <SetMapView center={center} /> : <></>}
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
