@@ -103,8 +103,6 @@ const MonthSummaryCharts = () => {
       ],
       labels: {
         show: true,
-        // rotate: -45,
-        // rotateAlways: true,
         style: {
           colors: "#6b7280",
         },
@@ -138,10 +136,6 @@ const MonthSummaryCharts = () => {
         offsetX: 60,
       },
     },
-    // legend: {
-    //   horizontalAlign: "left",
-    //   offsetX: 40,
-    // },
   };
 
   return (

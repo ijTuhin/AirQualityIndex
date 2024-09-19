@@ -18,7 +18,7 @@ export default function ResultSection() {
       value: "65",
     },
     {
-      name: "cnn",
+      name: "gnn",
       value: "37",
     },
   ];
@@ -26,16 +26,19 @@ export default function ResultSection() {
     <div
       className={`lg:md:w-[100%] bg-slate-950 flex flex-col items-center justify-between pt-5 relative overflow-hidden`}
     >
+      {/* To show selected location and time */}
       <ResultHeading />
       <div className="flex flex-col items-center">
+        {/* Observed Data */}
         <ObservedChart />
+        {/* Calculated Data by model */}
         <section className={`my-3 grid grid-cols-2 gap-3`}>
           {model.map((i, index) => {
             return <CalculatedData key={index} id={index} data={i} />;
           })}
         </section>
       </div>
-      {/* <AllDataChart data={model} /> */}
+      {/* Monthly Summary */}
       <section className={`w-full `}>
         <MonthSummaryCharts />
       </section>

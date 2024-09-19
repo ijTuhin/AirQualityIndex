@@ -8,11 +8,6 @@ export default function Calendar() {
   const [year, setYear] = useState(0);
   return (
     <div className={` shadow-lg`}>
-      {/* <h1
-        className={`text-center py-2 border bg-blue-gray-300 text-gray-100 text-lg`}
-      >
-        Calendar
-      </h1> */}
       <section className="p-3.5">
         <div className={`flex justify-between items-center py-2 text-gray-600`}>
           <button

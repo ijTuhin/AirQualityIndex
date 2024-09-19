@@ -12,11 +12,16 @@ const ProviderComponent = ({ children }) => {
     data: division,
     type: null,
   });
+  const [position, setPosition] = useState(division.map((i) => i.coordinates));
   useEffect(() => {
     console.log(query);
   }, [query]);
   return (
-    <Context.Provider value={{ query, setQuery, region, setRegion }}>{children}</Context.Provider>
+    <Context.Provider
+      value={{ query, setQuery, region, setRegion, position, setPosition }}
+    >
+      {children}
+    </Context.Provider>
   );
 };
 const useContextData = () => {

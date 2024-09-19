@@ -10,7 +10,7 @@ import {
 } from "semantic-ui-react";
 
 export default function AboutUsModal() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); // For modal
   return (
     <Modal
       basic
