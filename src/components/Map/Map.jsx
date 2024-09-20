@@ -8,7 +8,6 @@ import L from "leaflet";
 // Fixed marker icon not showing issue in Leaflet
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
-import { useState } from "react";
 
 // Fixed default marker icons in Leaflet for React
 let DefaultIcon = L.icon({
@@ -18,9 +17,7 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 export default function Map() {
-  const { query, setQuery, position, setPosition } = useContextData();
-  const [mapViewPosition, setMapViewPosition] = useState([23.8793, 93.3178]);
-  const [center, setCenter] = useState(null);
+  const { query, setQuery, mapViewPosition, setMapViewPosition, center, setCenter } = useContextData();
   const getLocationName = async (lat, lon) => {
     try {
       /* Make API request to get map location using lat long */

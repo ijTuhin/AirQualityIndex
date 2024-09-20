@@ -2,7 +2,7 @@ import { Dropdown } from "semantic-ui-react";
 import { useContextData } from "../Context/UseContext";
 
 export default function SelectLocation({ region }) {
-  const { query, setQuery, setPosition } = useContextData();
+  const { query, setQuery, handleLocationSearch } = useContextData();
 
   /* For Semantic Dropdown Data */
   const options = region?.data?.map((val, index) => ({
@@ -13,22 +13,7 @@ export default function SelectLocation({ region }) {
   return (
     <Dropdown
       className={`flex items-center active:outline-none`}
-      onChange={(e) => {
-        /* set query to get data from results */
-        setQuery({
-          ...query,
-          location: e.target.textContent,
-        });
-
-        /* Set lat, long to get data and mark location on map */
-        setPosition([
-          region?.data?.filter(
-            (i) =>
-              (i.division === e.target.textContent && region?.type === 0) ||
-              (region?.type === 1 && i.district === e.target.textContent)
-          )[0].coordinates,
-        ]);
-      }}
+      onChange={(e) => handleLocationSearch(e.target.textContent)}
       placeholder="Location"
       fluid
       search

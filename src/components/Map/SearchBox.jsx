@@ -1,33 +1,7 @@
 import { useContextData } from "../Context/UseContext";
 
-export default function SearchBox({ setMapViewPosition, setCenter }) {
-  const { query, setQuery, setPosition } = useContextData();
-  // Function to handle the search
-  const handleSearch = async () => {
-    console.log(query.search);
-    if (!query.search) return;
-    // Call Nominatim API to convert the search query to lat/lng
-    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${query.search}`;
-
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      console.log(data);
-      if (data.length > 0) {
-        // Extract latitude, longitude and location from the first result
-        const { lat, lon, display_name } = data[0];
-        const newCenter = [parseFloat(lat), parseFloat(lon)];
-
-        // Update the map center and marker position
-        setMapViewPosition(newCenter);
-        setCenter(newCenter);
-        setPosition([newCenter]);
-        setQuery({ ...query, location: display_name });
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+export default function SearchBox() {
+  const { query, setQuery, handleLocationSearch } = useContextData();
   return (
     <div className={`w-full flex justify-center`}>
       <div
@@ -65,7 +39,7 @@ export default function SearchBox({ setMapViewPosition, setCenter }) {
               </div>
             </div>
             <button
-              onClick={handleSearch}
+              onClick={() => handleLocationSearch(query.search)}
               className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             >
               Search
