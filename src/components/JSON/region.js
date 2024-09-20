@@ -3760,22 +3760,4 @@ const division = [
   { division: "Rangpur", divisionbn: "রংপুর", coordinates: [25.8483, 88.9414] },
   { division: "Sylhet", divisionbn: "সিলেট", coordinates: [24.705, 91.6761] },
 ];
-const years = [
-  2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
-  2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021,
-];
-const months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-export { division, years, district, months, bdAPI };
+export { division, district, bdAPI };

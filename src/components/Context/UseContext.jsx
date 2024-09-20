@@ -1,12 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { division, months, years } from "../JSON/data";
+import { division } from "../JSON/region";
 
 const Context = createContext();
 const ProviderComponent = ({ children }) => {
   const [query, setQuery] = useState({
-    year: years[0],
-    month: months[0],
-    coordinates: [24.0, 90.3563],
+    time: '31-12-2019',
+    // coordinates: [24.0, 90.3563],
   });
   const [region, setRegion] = useState({
     data: division,

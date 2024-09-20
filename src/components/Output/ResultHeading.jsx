@@ -12,7 +12,7 @@ export default function ResultHeading() {
         <p className={`text-sm w-56`}>{query?.location}</p>
       </div>
       <p className="text-sm">
-        Date: <span>01-01-2000</span>
+        Date: <span>{query.time}</span>
       </p>
     </div>
   );
