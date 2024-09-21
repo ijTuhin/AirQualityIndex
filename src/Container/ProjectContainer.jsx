@@ -9,11 +9,11 @@ export default function ProjectContainer() {
   const { query } = useContextData();
   return (
     <main
-      className={`w-screen lg:md:h-screen h-screen flex flex-col items-center text-[#4F4F4F] bg-slate-950/95`}
+      className={`w-screen lg:md:h-screen h-screen flex flex-col items-center text-[#4F4F4F] bg-slate-950/95 overflow-hidden`}
     >
       {/* Heading */}
       <nav
-        className={`py-2.5 px-5 flex items-center bg-[#272832] text-[#F8F9FA] w-full justify-between shadow-lg`}
+        className={`py-2.5 px-5 flex items-center bg-[#272832] text-[#F8F9FA] w-screen justify-between shadow-lg`}
       >
         <h3 className={`text-lg playwrite-cu-ba text-cyan-300/80`}>
           Air Quality Index
@@ -28,7 +28,7 @@ export default function ProjectContainer() {
       </div>
 
       {/* Main Mobile Screen Body */}
-      <div className={`w-full h-full lg:hidden flex flex-col gap-y-3`}>
+      <div className={`w-screen h-full lg:hidden flex flex-col gap-y-3`}>
         {/* <Calendar /> */}
         <section className={`flex justify-between px-3 pt-3`}>
           <button className={`text-center`}>Choose Date</button>

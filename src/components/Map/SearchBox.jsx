@@ -9,7 +9,7 @@ export default function SearchBox() {
           query?.location ? "w-full lg:w-[80%]" : "w-full lg:w-[60%]"
         }`}
       >
-        <div className={`w-full flex justify-center lg:px-20 px-14`}>
+        <div className={`w-full flex justify-center lg:md:px-24 px-14`}>
           <div className="flex-grow items-center lg:gap-x-2 gap-x-1 flex">
             <div className="w-full">
               <div className="relative">

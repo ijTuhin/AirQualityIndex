@@ -23,7 +23,7 @@ export default function SideBarMenu() {
   return (
     <section
       className={`${
-        query?.location ? "lg:md:w-[35%]" : "lg:md:w-[18%]"
+        query?.location ? "lg:w-[37%]" : "lg:w-[25%]"
       } bg-slate-950/95`}
     >
       <Calendar />
