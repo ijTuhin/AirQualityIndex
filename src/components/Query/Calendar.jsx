@@ -19,7 +19,7 @@ export default function Calendar() {
     else setMonth(leap);
   }, [val]);
   return (
-    <div className={`p-4 space-y-0`}>
+    <div className={`lg:p-4 py-4 px-14 space-y-0`}>
       {/* Calendar Heading */}
       <section className={`flex justify-between items-center text-sm`}>
         <button

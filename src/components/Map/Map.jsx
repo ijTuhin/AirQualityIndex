@@ -17,7 +17,14 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 export default function Map() {
-  const { query, setQuery, mapViewPosition, setMapViewPosition, center, setCenter } = useContextData();
+  const {
+    query,
+    setQuery,
+    mapViewPosition,
+    setMapViewPosition,
+    center,
+    setCenter,
+  } = useContextData();
   const getLocationName = async (lat, lon) => {
     try {
       /* Make API request to get map location using lat long */
@@ -57,8 +64,10 @@ export default function Map() {
   };
 
   return (
-    <section className={`w-full flex flex-col bg-white`}>
-      <div className="flex-grow relative">
+    <section
+      className={`lg:mt-0 mt-0 w-full lg:md:h-full flex-grow lg:flex-grow-0 flex flex-col bg-black`}
+    >
+      <div className="w-full h-full relative overflow-visible">
         <SearchBox
           setMapViewPosition={setMapViewPosition}
           setCenter={setCenter}
