@@ -19,21 +19,19 @@ export default function Calendar() {
     else setMonth(leap);
   }, [val]);
   return (
-    <div className={`lg:p-4 py-4 px-14 space-y-0`}>
+    <div className={`lg:p-4 py-4 px-6 space-y-0`}>
       {/* Calendar Heading */}
       <section className={`flex justify-between items-center text-sm`}>
         <button
           onClick={() => setOption(0)}
-          className={`text-lg text-gray-400`}
+          className={`lg:px-0 px-2 text-gray-400 flex items-center gap-x-3`}
         >
-          <FaRegCalendarAlt />
+          <span className={`text-lg`}>
+            <FaRegCalendarAlt />
+          </span>
+          <span className={`text-sm font-mono`}>{query.time}</span>
         </button>
-        <button
-          onClick={() => setOption(0)}
-          className={`px-2 text-gray-400 text-sm font-mono`}
-        >
-          {query.time}
-        </button>
+
         <div className={`flex items-center justify-center gap-x-0.5`}>
           <button
             onClick={() => setOption(1)}

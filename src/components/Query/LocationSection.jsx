@@ -53,6 +53,7 @@ export default function LocationSection() {
                           : setRegion({ type: i, data: district })
                       }
                       type="radio"
+                      defaultChecked={i === 0}
                       name="hs-radio-vertical-group"
                       className="shrink-0 mt-0.5 border-gray-200 rounded-full text-[#87CEEB] focus:ring-[#87CEEB] disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-[#87CEEB] dark:checked:border-[#87CEEB] dark:focus:ring-offset-gray-600"
                       id={val.id}
@@ -69,37 +70,29 @@ export default function LocationSection() {
             </section>
           </div>
         </div>
+
         {/* Select Location */}
-        <div className="hs-accordion" id="hs-basic-no-arrow-heading-two">
+        <div className="hs-accordion active" id="hs-basic-no-arrow-heading-one">
           <button
-            className={`hs-accordion-toggle hs-accordion-active:text-gray-700 py-3 inline-flex items-center justify-between gap-x-3 w-full font-semibold rounded-lg text-start text-gray-700 dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 ${
-              region?.type === null
-                ? "cursor-not-allowed"
-                : "hover:text-gray-600/70 focus:outline-none focus:text-gray-600 disabled:opacity-50 disabled:pointer-events-none"
-            }`}
-            aria-expanded="false"
-            aria-controls="hs-basic-no-arrow-collapse-two"
+            className="hs-accordion-toggle py-3 inline-flex items-center justify-between gap-x-3 w-full font-semibold text-start text-gray-700 hover:text-gray-600/70 focus:outline-none focus:text-gray-600 rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400"
+            aria-expanded="true"
+            aria-controls="hs-basic-no-arrow-collapse-one"
           >
             <span className={`capitalize`}>
-              Select{" "}
-              {region?.type === null ? "Location" : area[region.type].area}
+              Select {area[region.type].area}
             </span>
             <span>
               <MdChevronRight />
             </span>
           </button>
           <div
-            id="hs-basic-no-arrow-collapse-two"
-            className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
+            id="hs-basic-no-arrow-collapse-one"
+            className="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
             role="region"
-            aria-labelledby="hs-basic-no-arrow-heading-two"
+            aria-labelledby="hs-basic-no-arrow-heading-one"
           >
             <div className={`lg:h-[19rem] h-[11.25rem]`}>
-              {region?.type !== null ? (
-                <SelectLocation region={region} />
-              ) : (
-                <></>
-              )}
+              <SelectLocation region={region} />
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@ const ProviderComponent = ({ children }) => {
   });
   const [region, setRegion] = useState({
     data: division,
-    type: null,
+    type: 0,
   });
   const [position, setPosition] = useState(division.map((i) => i.coordinates));
   const [mapViewPosition, setMapViewPosition] = useState([23.8793, 93.3178]);

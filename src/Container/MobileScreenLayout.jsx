@@ -20,13 +20,13 @@ export default function MobileScreenLayout() {
         <div className={`grid grid-cols-2 px-8 gap-x-3 pt-5 pb-2`}>
           <button
             onClick={() => setContent(1)}
-            className={`px-10 py-5 rounded-lg text-green-600 border-2 border-green-600 hover:bg-green-700 hover:text-gray-100`}
+            className={`py-3 text-center text-sm rounded-lg text-green-600 border-2 border-green-600 hover:bg-green-700 hover:text-gray-100`}
           >
             Choose Date
           </button>
           <button
             onClick={() => setContent(2)}
-            className={`px-10 py-5 rounded-lg text-green-600 border-2 border-green-600 hover:bg-green-700 hover:text-gray-100`}
+            className={`py-3 text-center text-sm rounded-lg text-green-600 border-2 border-green-600 hover:bg-green-700 hover:text-gray-100`}
           >
             Search Location
           </button>
