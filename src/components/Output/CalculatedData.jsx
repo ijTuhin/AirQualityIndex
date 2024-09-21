@@ -1,11 +1,11 @@
 export default function CalculatedData({ id, data }) {
   return (
     <div
-      className={`bg-gray-200 py-3.5 px-5 rounded-md flex gap-x-5 justify-between items-start`}
+      className={`lg:bg-gray-200 lg:border-0 border py-3.5 px-5 rounded-md flex lg:flex-row flex-col gap-x-5 lg:justify-between lg:items-start items-center w-full`}
     >
-      <div className="space-y-2">
+      <div className="w-full flex flex-col justify-between lg:items-start items-center lg:gap-y-1 gap-x-2">
         <p
-          className={`text-xl uppercase font-bold ${
+          className={`lg:text-xl uppercase font-bold ${
             id === 1
               ? "text-red-500"
               : id === 2

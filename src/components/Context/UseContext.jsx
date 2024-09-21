@@ -3,8 +3,9 @@ import { division } from "../JSON/region";
 
 const Context = createContext();
 const ProviderComponent = ({ children }) => {
+  const [content, setContent] = useState(0);
   const [query, setQuery] = useState({
-    time: '31-12-2019',
+    time: "31-12-2019",
     // coordinates: [24.0, 90.3563],
   });
   const [region, setRegion] = useState({
@@ -36,6 +37,7 @@ const ProviderComponent = ({ children }) => {
         setCenter(newCenter);
         setPosition([newCenter]);
         setQuery({ ...query, location: display_name });
+        setContent(0);
       }
     } catch (err) {
       console.log(err);
@@ -57,6 +59,8 @@ const ProviderComponent = ({ children }) => {
         setMapViewPosition,
         center,
         setCenter,
+        content,
+        setContent,
         handleLocationSearch,
       }}
     >

@@ -80,7 +80,7 @@ export default function ObservedChart() {
 
   return (
     <div className={`flex flex-col items-center text-white`}>
-      <p className={`text-gray-500 text-xl font-bold`}>
+      <p className={`text-gray-500 text-lg font-bold`}>
         Observed Result of Air Quality
       </p>
       <div id="chart">

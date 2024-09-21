@@ -2,58 +2,66 @@ import React, { useState } from "react";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import Map from "../components/Map/Map";
 import LocationSection from "../components/Query/LocationSection";
+import ResultSection from "../components/Output/ResultSection";
 import Calendar from "../components/Query/Calendar";
+import { useContextData } from "../components/Context/UseContext";
 
 export default function MobileScreenLayout() {
-  const [content, setContent] = useState(0);
+  const { content, setContent } = useContextData();
   return (
     <div className={`w-screen h-full lg:hidden flex flex-col gap-y-3`}>
-      {/* <Calendar /> */}
-      {/* <section className={`flex justify-between px-3 pt-3`}>
-        <button className={`text-center`}>Choose Date</button>
-        <button className={`text-2xl`}>
-          <FaRegCalendarAlt />
-        </button>
-      </section> */}
-      {/* Map */}
       <section>
-        <div className={`grid grid-cols-2 px-8 gap-x-3 pt-5 pb-2`}>
-          <button
-            onClick={() => setContent(1)}
-            className={`py-3 text-center text-sm rounded-lg text-green-600 border-2 border-green-600 hover:bg-green-700 hover:text-gray-100`}
-          >
-            Choose Date
-          </button>
-          <button
-            onClick={() => setContent(2)}
-            className={`py-3 text-center text-sm rounded-lg text-green-600 border-2 border-green-600 hover:bg-green-700 hover:text-gray-100`}
-          >
-            Search Location
-          </button>
-        </div>
-        {content ? (
-          <div className={`h-fit px-3`}>
-            {content === 1 ? <Calendar /> : <LocationSection />}
-          </div>
+        {content === 0 ? (
+          <ResultSection />
         ) : (
-          <></>
+          <section>
+            <div className={`grid grid-cols-2 px-8 gap-x-3 pt-5 pb-2`}>
+              {/* Open Calendar */}
+              <button
+                onClick={() => {
+                  if (content === 3) setContent(1);
+                  else setContent(3);
+                }}
+                className={`py-3 text-center text-sm rounded-lg text-green-600 border-2 border-green-600 hover:text-gray-100 ${
+                  content === 3
+                    ? "hover:bg-green-600 bg-green-700"
+                    : "hover:bg-green-700"
+                }`}
+              >
+                Choose Date
+              </button>
+              {/* Open Location Query */}
+              <button
+                onClick={() => {
+                  if (content === 4) setContent(1);
+                  else setContent(4);
+                }}
+                className={`py-3 text-center text-sm rounded-lg text-green-600 border-2 border-green-600 hover:text-gray-100 ${
+                  content === 4
+                    ? "hover:bg-green-600 bg-green-700"
+                    : "hover:bg-green-700"
+                }`}
+              >
+                Search Location
+              </button>
+            </div>
+            {content !== 1 ? (
+              <div className={`h-fit px-3`}>
+                {content === 3 ? (
+                  <Calendar />
+                ) : content === 4 ? (
+                  <LocationSection />
+                ) : (
+                  <></>
+                )}
+              </div>
+            ) : (
+              <></>
+            )}
+          </section>
         )}
       </section>
       <Map />
-      {/* Search Options */}
-      {/* <div className={`flex justify-center items-center gap-x-2`}>
-        <span className={`border-b w-1/4 border-gray-700/80`}></span>
-        <p className="text-sm">or</p>
-        <span className={`border-b w-1/4 border-gray-700/80`}></span>
-      </div>
-      <section className={`flex justify-center px-3 pb-5`}>
-        <button
-          className={`px-10 py-2 rounded-full bg-green-600 text-gray-900 hover:bg-green-700`}
-        >
-          Search Location
-        </button>
-      </section> */}
-      {/* <LocationSection /> */}
     </div>
   );
 }
