@@ -6,6 +6,7 @@ export default withMT({
     "./src/**/*.{js,ts,jsx,tsx}",
     "node_modules/preline/dist/*.js",
   ],
+  purge: ["./src/**/*.html", "./src/**/*.js", "./src/**/*.jsx"],
   plugins: [
     // require('@tailwindcss/forms'),
     require("preline/plugin"),

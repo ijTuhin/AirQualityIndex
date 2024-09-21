@@ -41,7 +41,7 @@ export default function ProjectContainer() {
         {/* Search Options */}
         <div className={`flex justify-center items-center gap-x-2`}>
           <span className={`border-b w-1/4 border-gray-700/80`}></span>
-          <p>OR</p>
+          <p className="text-sm">or</p>
           <span className={`border-b w-1/4 border-gray-700/80`}></span>
         </div>
         <section className={`flex justify-center px-3 pb-5`}>
