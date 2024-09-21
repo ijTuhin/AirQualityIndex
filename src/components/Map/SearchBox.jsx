@@ -5,7 +5,7 @@ export default function SearchBox() {
   return (
     <div className={`w-full flex justify-center`}>
       <div
-        className={`lg:h-fit lg:px-2 lg:py-3 py-1 lg:space-y-2 space-y-1 absolute z-[1300] top-2 ${
+        className={`lg:h-fit lg:px-2 lg:py-3 py-1 lg:space-y-2 space-y-1 absolute z-[500] top-2 ${
           query?.location ? "w-full lg:w-[80%]" : "w-full lg:w-[60%]"
         }`}
       >

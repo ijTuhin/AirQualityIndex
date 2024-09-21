@@ -94,7 +94,7 @@ export default function LocationSection() {
             role="region"
             aria-labelledby="hs-basic-no-arrow-heading-two"
           >
-            <div className={`h-[19rem]`}>
+            <div className={`lg:h-[19rem] h-[11.25rem]`}>
               {region?.type !== null ? (
                 <SelectLocation region={region} />
               ) : (
