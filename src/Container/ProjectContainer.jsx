@@ -4,6 +4,7 @@ import AboutUsModal from "../components/About/AboutUsModal";
 import { useContextData } from "../components/Context/UseContext";
 import ResultSection from "../components/Output/ResultSection";
 import { FaRegCalendarAlt } from "react-icons/fa";
+import LocationSection from "../components/Query/LocationSection";
 
 export default function ProjectContainer() {
   const { query } = useContextData();
@@ -51,6 +52,7 @@ export default function ProjectContainer() {
             Search Location
           </button>
         </section>
+        <LocationSection/>
       </div>
     </main>
   );
