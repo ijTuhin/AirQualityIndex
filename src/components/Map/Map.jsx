@@ -67,7 +67,7 @@ export default function Map() {
     <section
       className={`lg:mt-0 mt-0 w-full lg:md:h-full flex-grow lg:flex-grow-0 flex flex-col bg-black`}
     >
-      <div className="w-full h-full relative overflow-visible">
+      <div className="w-full h-full relative flex-grow">
         <SearchBox
           setMapViewPosition={setMapViewPosition}
           setCenter={setCenter}
