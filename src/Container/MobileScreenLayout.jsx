@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-import { FaRegCalendarAlt } from "react-icons/fa";
 import Map from "../components/Map/Map";
 import LocationSection from "../components/Query/LocationSection";
 import ResultSection from "../components/Output/ResultSection";
@@ -10,10 +8,12 @@ export default function MobileScreenLayout() {
   const { content, setContent } = useContextData();
   return (
     <div className={`w-screen h-full lg:hidden flex flex-col gap-y-3`}>
-      <section>
-        {content === 0 ? (
-          <ResultSection />
-        ) : (
+      {content === 0 ? (
+        /* Show Output data if query is made and state is false */
+        <ResultSection />
+      ) : (
+        /* Map and Select Buttons */
+        <>
           <section>
             <div className={`grid grid-cols-2 px-8 gap-x-3 pt-5 pb-2`}>
               {/* Open Calendar */}
@@ -45,6 +45,7 @@ export default function MobileScreenLayout() {
                 Search Location
               </button>
             </div>
+            {/* Show Calendar or Dropdown According to State condition */}
             {content !== 1 ? (
               <div className={`h-fit px-3`}>
                 {content === 3 ? (
@@ -59,9 +60,9 @@ export default function MobileScreenLayout() {
               <></>
             )}
           </section>
-        )}
-      </section>
-      <Map />
+          <Map />
+        </>
+      )}
     </div>
   );
 }

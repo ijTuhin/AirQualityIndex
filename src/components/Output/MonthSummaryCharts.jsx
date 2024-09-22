@@ -139,12 +139,12 @@ const MonthSummaryCharts = () => {
   };
 
   return (
-    <div id="line-adwords">
+    <div id="line-adwords" className="h-[20rem]">
       <ApexCharts
         options={options}
         series={options.series}
         type="line"
-        height={250}
+        height="100%"
       />
     </div>
   );

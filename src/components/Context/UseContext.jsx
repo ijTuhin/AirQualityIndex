@@ -3,7 +3,7 @@ import { division } from "../JSON/region";
 
 const Context = createContext();
 const ProviderComponent = ({ children }) => {
-  const [content, setContent] = useState(0);
+  const [content, setContent] = useState(1);
   const [query, setQuery] = useState({
     time: "31-12-2019",
     // coordinates: [24.0, 90.3563],

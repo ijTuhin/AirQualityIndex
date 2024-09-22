@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { BsQuestionCircle } from "react-icons/bs";
 import {
   Button,
@@ -10,7 +10,7 @@ import {
 } from "semantic-ui-react";
 
 export default function AboutUsModal() {
-  const [open, setOpen] = useState(false); // For modal
+  const [open, setOpen] = useState(false);
   return (
     <div className={`absolute right-2 z-[1305] w-full flex justify-end px-3`}>
       <Modal
@@ -20,16 +20,18 @@ export default function AboutUsModal() {
         open={open}
         size="small"
         trigger={
+          /* Button to open modal */
           <button
             className={`flex items-center justify-center gap-x-1.5 text-sm`}
           >
-            <span className="text-slate-300">About Us</span>
+            <span className="text-slate-300 lg:flex hidden">About Us</span>
             <span className={`mb-0.5`}>
               <BsQuestionCircle />
             </span>
           </button>
         }
       >
+        {/* Modal Body */}
         <Header icon>
           <Icon name="archive" />
           Archive Old Messages
