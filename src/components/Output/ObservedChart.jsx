@@ -2,8 +2,8 @@ import React from "react";
 import ReactApexChart from "react-apexcharts";
 import Chart from "react-apexcharts";
 
-export default function ObservedChart() {
-  const series = [76]; // This is your data
+export default function ObservedChart({value}) {
+  const series = [value]; // This is your data
   const options = {
     chart: {
       type: "radialBar",

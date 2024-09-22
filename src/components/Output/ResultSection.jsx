@@ -4,6 +4,7 @@ import ObservedChart from "./ObservedChart";
 import ResultHeading from "./ResultHeading";
 
 export default function ResultSection() {
+  const value = 48
   const model = [
     {
       name: "cnn",
@@ -27,10 +28,12 @@ export default function ResultSection() {
       className={`lg:w-[100%] bg-slate-950 flex flex-col items-center justify-between lg:gap-y-5 pt-5 relative lg:overflow-hidden overflow-visible`}
     >
       {/* To show selected location and time */}
-      <ResultHeading />
+      <ResultHeading  value={value}/>
+
+      {/*  Output*/}
       <div className="flex flex-col items-center mt-10 mb-[5.2rem] lg:mb-0 lg:mt-0">
         {/* Observed Data */}
-        <ObservedChart />
+        <ObservedChart value={value} />
         {/* Calculated Data by model */}
         <section
           className={`mb-3 w-full grid lg:grid-cols-2 grid-cols-2 md:grid-cols-4 gap-3`}
@@ -40,6 +43,7 @@ export default function ResultSection() {
           })}
         </section>
       </div>
+
       {/* Monthly Summary */}
       <section className={`w-full relative bottom-5 lg:bottom-2 right-2`}>
         <p className="text-center text-lg text-blue-500 w-full absolute -top-1">
