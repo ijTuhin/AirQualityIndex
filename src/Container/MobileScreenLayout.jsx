@@ -1,5 +1,5 @@
 import Map from "../components/Map/Map";
-import LocationSection from "../components/Query/LocationSection";
+import RegionQuerySection from "../components/Query/RegionQuerySection";
 import ResultSection from "../components/Output/ResultSection";
 import Calendar from "../components/Query/Calendar";
 import { useContextData } from "../components/Context/UseContext";
@@ -51,7 +51,7 @@ export default function MobileScreenLayout() {
                 {content === 3 ? (
                   <Calendar />
                 ) : content === 4 ? (
-                  <LocationSection />
+                  <RegionQuerySection />
                 ) : (
                   <></>
                 )}

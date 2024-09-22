@@ -1,6 +1,6 @@
 import Calendar from "./Calendar";
 import { useContextData } from "../Context/UseContext";
-import LocationSection from "./LocationSection";
+import RegionQuerySection from "./RegionQuerySection";
 
 export default function SideBarMenu() {
   const { query } = useContextData();
@@ -11,7 +11,7 @@ export default function SideBarMenu() {
       } bg-slate-950/95`}
     >
       <Calendar />
-      <LocationSection/>
+      <RegionQuerySection />
     </section>
   );
 }

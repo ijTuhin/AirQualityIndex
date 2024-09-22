@@ -9,7 +9,7 @@ export default function ResultHeading() {
         <p className={`lg:text-5xl text-[2.35rem] text-green-600`}>
           <FaLocationDot />
         </p>
-        <p className={`text-sm w-56`}>{query?.location}Pabna, Pabna Sadar Upazila, Pabna District, 6600, Bangladesh</p>
+        <p className={`text-sm w-56`}>{query?.location}</p>
       </div>
       <p className="text-sm">
         Date: <span>{query.time}</span>

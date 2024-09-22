@@ -1,9 +1,9 @@
 import { useContextData } from "../Context/UseContext";
-import { district, division } from "../JSON/region";
+import { district, division, upazilla } from "../JSON/region";
 import SelectLocation from "./SelectLocation";
 import { MdChevronRight } from "react-icons/md";
 
-export default function LocationSection() {
+export default function RegionQuerySection() {
   const { region, setRegion } = useContextData();
   const area = [
     {
@@ -15,7 +15,7 @@ export default function LocationSection() {
       id: "hs-radio-vertical-group-3",
     },
     {
-      area: "upazilla",
+      area: "upazila",
       id: "hs-radio-vertical-group-4",
     },
   ];
@@ -50,7 +50,7 @@ export default function LocationSection() {
                           ? setRegion({ type: i, data: division })
                           : i === 1
                           ? setRegion({ type: i, data: district })
-                          : setRegion({ type: i, data: district })
+                          : setRegion({ type: i, data: upazilla })
                       }
                       type="radio"
                       defaultChecked={i === 0}
@@ -92,7 +92,7 @@ export default function LocationSection() {
             aria-labelledby="hs-basic-no-arrow-heading-one"
           >
             <div className={`lg:h-[19rem] h-[11.25rem]`}>
-              <SelectLocation region={region} />
+              <SelectLocation />
             </div>
           </div>
         </div>

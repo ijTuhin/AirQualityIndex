@@ -1,19 +1,19 @@
 import { Dropdown } from "semantic-ui-react";
 import { useContextData } from "../Context/UseContext";
 
-export default function SelectLocation({ region }) {
-  const { query, setQuery, handleLocationSearch } = useContextData();
+export default function SelectLocation() {
+  const { handleLocationSearch, region } = useContextData();
 
   /* For Semantic Dropdown Data */
   const options = region?.data?.map((val, index) => ({
     key: index,
-    text: region?.type === 0 ? val.division : val.district, // set dropdown value according to selected region
-    value: region?.type === 0 ? val.division : val.district,
+    text: val.name.split(" ")[0],
+    value: val.name,
   }));
   return (
     <Dropdown
       className={`flex items-center active:outline-none`}
-      onChange={(e) => handleLocationSearch(e.target.textContent)}
+      onChange={(e, data) => handleLocationSearch(data.value)}
       placeholder="Location"
       fluid
       search
