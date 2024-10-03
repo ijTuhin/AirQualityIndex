@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
+const datasetRoute = require("./Routes/datasetRoute.js");
+
 const app = express();
 app.use(cors()); // using middleware
 app.use(express.json()); // to Body parse
@@ -22,6 +24,7 @@ const database = (module.exports = () => {
 
 database();
 
+app.use("/", datasetRoute);
 
 app.listen(3001, () => {
   console.log("Air Quality Index Mongoose Server running");
