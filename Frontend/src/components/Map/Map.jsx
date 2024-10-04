@@ -26,7 +26,6 @@ export default function Map() {
     center,
     setCenter,
     setContent,
-    getDataFromDB,
   } = useContextData();
   const getLocationName = async (lat, lon) => {
     try {

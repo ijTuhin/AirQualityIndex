@@ -1,8 +1,5 @@
 import ReactApexChart from "react-apexcharts";
-import ApexCharts from "react-apexcharts";
-import { useContextData } from "../Context/UseContext";
 const MonthSummaryCharts = ({ data }) => {
-  // const {query} = useContextData()
   const values = data.map((i) => i.value);
   console.log(values);
   const options = {
@@ -69,7 +66,7 @@ const MonthSummaryCharts = ({ data }) => {
           },
         },
         tooltip: {
-          enabled: true,
+          enabled: false,
         },
       },
       yaxis: {

@@ -36,8 +36,6 @@ const ProviderComponent = ({ children }) => {
         setQuery({
           ...query,
           location: display_name,
-          // long: "92.335",
-          // lat: "20.745",
           lat: parseFloat(lat),
           long: parseFloat(lon),
         });
@@ -54,8 +52,10 @@ const ProviderComponent = ({ children }) => {
     await axios
       .get(url)
       .then((res) => {
-        // console.log(res.data, "Result from Database")
-        setQuery({ ...query, result: { ...res.data } });
+        if (res.data !== null) {
+          setQuery({ ...query, result: { ...res.data } });
+        }
+        console.log(query.result, "Result from Database");
       })
       .catch((err) => console.log(err));
   };

@@ -5,7 +5,7 @@ import { useContextData } from "../Context/UseContext";
 
 export default function ObservedChart() {
   const {query} = useContextData()
-  const res = query.result.observed
+  const res = query?.result !== undefined ? query?.result?.observed : 1
   console.log(res)
   const series = [res / 2]; // This is your data
   const options = {

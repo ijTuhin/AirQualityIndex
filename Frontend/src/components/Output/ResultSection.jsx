@@ -10,23 +10,23 @@ export default function ResultSection() {
   const model = [
     {
       name: "cnn",
-      value: parseFloat(query.result["cnn"]),
+      value: query?.result !== undefined ? parseFloat(query?.result["cnn"]) : 0,
     },
     {
       name: "cnn+lstm",
-      value: parseFloat(query.result["cnn+lstm"]),
+      value: query?.result !== undefined ? parseFloat(query?.result["cnn+lstm"]) : 0,
     },
     {
       name: "observed",
-      value: parseFloat(query.result["observed"]),
+      value: query?.result !== undefined ? parseFloat(query?.result["observed"]) : 0,
     },
     {
       name: "gnn",
-      value: parseFloat(query.result["gnn"]),
+      value: query?.result !== undefined ? parseFloat(query?.result["gnn"]) : 0,
     },
     {
       name: "gnn+lstm",
-      value: parseFloat(query.result["gnn+lstm"]),
+      value: query?.result !== undefined ? parseFloat(query?.result["gnn+lstm"]) : 0,
     },
   ];
   return (
@@ -38,7 +38,7 @@ export default function ResultSection() {
         className={`w-full flex flex-col items-center justify-between lg:gap-y-5`}
       >
         {/* To show selected location and time */}
-        <ResultHeading value={query.result.observed} />
+        <ResultHeading value={query?.result?.observed} />
 
         {/*  Output*/}
         <div className="flex flex-col items-center mt-10 mb-[5.2rem] lg:mb-0 lg:mt-0">

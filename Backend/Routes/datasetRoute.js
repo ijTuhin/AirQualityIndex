@@ -6,27 +6,15 @@ const Dataset = new mongoose.model("Dataset", datasetSchema);
 
 router.get("/:date", async (req, res) => {
   const { lat, long } = req.query;
-  const toPointThree = {
-    lat: parseFloat(lat).toFixed(2).toString() + "5",
-    long: parseFloat(long).toFixed(2).toString() + "5",
-  };
-  // const toPointFour = {
-  //   lat: parseFloat(lat).toFixed(4).toString(),
-  //   long: parseFloat(long).toFixed(4).toString(),
-  // };
-  // const toPointFive = {
-  //   lat: parseFloat(lat).toFixed(5).toString(),
-  //   long: parseFloat(long).toFixed(5).toString(),
-  // };
   await Dataset.findOne({
     time: req.params.date,
-    latitude: toPointThree.lat,
-    longitude: toPointThree.long,
+    latitude: parseFloat(lat).toFixed(2).toString() + "5",
+    longitude: parseFloat(long).toFixed(2).toString() + "5",
   })
     .select({ time: 0 })
     .then((data) => {
       res.status(200).json(data);
-      console.log(data, req.query, toPointThree, req.params.date);
+      // console.log(data, req.query, req.params.date);
     })
     .catch(() => {
       res.status(400).json({
