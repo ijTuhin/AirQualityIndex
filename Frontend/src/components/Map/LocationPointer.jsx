@@ -1,8 +1,8 @@
 import { useContextData } from "../Context/UseContext";
 import { Marker, Popup } from "react-leaflet";
 export default function LocationPointer({ getLocationName }) {
-  const { position } = useContextData();
-
+  const { position, query } = useContextData();
+  console.log("Pointer", query.result)
   return (
     <>
       {position.map((i, index) => {

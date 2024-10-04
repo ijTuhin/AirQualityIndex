@@ -1,11 +1,15 @@
 import ReactApexChart from "react-apexcharts";
 import ApexCharts from "react-apexcharts";
-const MonthSummaryCharts = () => {
+import { useContextData } from "../Context/UseContext";
+const MonthSummaryCharts = ({ data }) => {
+  // const {query} = useContextData()
+  const values = data.map((i) => i.value);
+  console.log(values);
   const options = {
     series: [
       {
         name: "Air Quality Index",
-        data: [2.3, 3.1, 4.0, 10.1, 4.0],
+        data: [...values],
       },
     ],
     options: {

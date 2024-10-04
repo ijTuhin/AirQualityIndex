@@ -26,6 +26,7 @@ export default function Map() {
     center,
     setCenter,
     setContent,
+    getDataFromDB,
   } = useContextData();
   const getLocationName = async (lat, lon) => {
     try {
@@ -36,6 +37,7 @@ export default function Map() {
       const data = await response.json();
       if (data && data.display_name) {
         const newCenter = [parseFloat(lat), parseFloat(lon)];
+        // console.log(output);
         // Update the map center and marker position
         setMapViewPosition(newCenter);
         setCenter(newCenter);
@@ -43,9 +45,18 @@ export default function Map() {
         setQuery({
           ...query,
           location: data.display_name,
-          lat: parseFloat(lat),
-          long: parseFloat(lon),
+          long: "92.335",
+          lat: "20.745",
+          // lat: parseFloat(lat),
+          // long: parseFloat(lon),
         });
+        // getDataFromDB(query.time, query.lat, query.long);
+
+        // getDataFromDB({
+        //   time: query.time,
+        //   lat: query.lat,
+        //   long: query.long,
+        // });
         setContent(0);
       } else {
         // console.log("Location not found");

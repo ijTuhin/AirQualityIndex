@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { division } from "../JSON/region";
+import axios from "axios";
 const Context = createContext();
 const ProviderComponent = ({ children }) => {
   const [content, setContent] = useState(1);
@@ -35,8 +36,10 @@ const ProviderComponent = ({ children }) => {
         setQuery({
           ...query,
           location: display_name,
-          lat: parseFloat(lat),
-          long: parseFloat(lon),
+          long: "92.335",
+          lat: "20.745",
+          // lat: parseFloat(lat),
+          // long: parseFloat(lon),
         });
         setContent(0);
       }
@@ -44,13 +47,26 @@ const ProviderComponent = ({ children }) => {
       console.log(err);
     }
   };
+  const getDataFromDB = async (value) => {
+    // console.log(value);
+    const url = `http://localhost:3001/${value.time}?lat=${value.lat}&long=${value.long}`;
+    // console.log(url);
+    await axios
+      .get(url)
+      .then((res) => {
+        // console.log(res.data, "Result from Database")
+        setQuery({ ...query, result: { ...res.data } });
+      })
+      .catch((err) => console.log(err));
+  };
   useEffect(() => {
-    console.log(center, query);
-    // axios
-    //   .get("./pm2.5.json")
-    //   .then((res) => console.log(res.data[0], "Console"))
-    //   .catch((err) => console.log(err));
-  }, [query]);
+    getDataFromDB({
+      time: query.time,
+      lat: query.lat,
+      long: query.long,
+    });
+    console.log("time :", query);
+  }, [center, query.location]);
   return (
     <Context.Provider
       value={{
@@ -67,6 +83,7 @@ const ProviderComponent = ({ children }) => {
         content,
         setContent,
         handleLocationSearch,
+        getDataFromDB,
       }}
     >
       {children}
