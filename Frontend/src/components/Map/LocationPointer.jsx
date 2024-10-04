@@ -7,7 +7,7 @@ export default function LocationPointer({ getLocationName }) {
   const [hoveredValue, setHoveredValue] = useState(null);
 
   const getDataFromDBonHover = async (value) => {
-    const url = `http://localhost:3001/${value.time}?lat=${value.lat}&long=${value.long}`;
+    const url = `https://airqualityindex-x86a.onrender.com/${value.time}?lat=${value.lat}&long=${value.long}`;
     await axios
       .get(url)
       .then((res) => {

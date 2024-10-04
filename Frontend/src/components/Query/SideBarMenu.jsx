@@ -7,7 +7,7 @@ export default function SideBarMenu() {
   return (
     <section
       className={`${
-        query?.result !== undefined && query?.location
+        query?.location
           ? "lg:w-[37%]"
           : "lg:w-[25%]"
       } bg-slate-950/95`}

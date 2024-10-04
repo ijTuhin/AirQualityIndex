@@ -45,8 +45,9 @@ const ProviderComponent = ({ children }) => {
   };
   const getDataFromDB = async (value) => {
     setLoading(true);
-    console.log(loading, value);
-    const url = `http://localhost:3001/${value.time}?lat=${value.lat}&long=${value.long}`;
+    const url =
+      import.meta.env.VITE_SOME_URL +
+      `/${value.time}?lat=${value.lat}&long=${value.long}`;
     await axios
       .get(url)
       .then((res) => {
