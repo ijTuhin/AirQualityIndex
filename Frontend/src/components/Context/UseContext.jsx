@@ -4,6 +4,7 @@ import axios from "axios";
 import { months } from "../JSON/time";
 const Context = createContext();
 const ProviderComponent = ({ children }) => {
+  const [loading, setLoading] = useState(false);
   const [content, setContent] = useState(1);
   const [val, setVal] = useState(11);
   const [query, setQuery] = useState({});
@@ -43,13 +44,16 @@ const ProviderComponent = ({ children }) => {
     }
   };
   const getDataFromDB = async (value) => {
+    setLoading(true);
+    console.log(loading, value);
     const url = `http://localhost:3001/${value.time}?lat=${value.lat}&long=${value.long}`;
     await axios
       .get(url)
       .then((res) => {
         if (res.data !== null) {
           setQuery({ ...query, result: { ...res.data } });
-        }
+        } else setQuery({ ...query, result: undefined });
+        setLoading(false);
       })
       .catch((err) => console.log(err));
   };
@@ -76,6 +80,8 @@ const ProviderComponent = ({ children }) => {
         setCenter,
         content,
         setContent,
+        loading,
+        setLoading,
         val,
         setVal,
         handleLocationSearch,

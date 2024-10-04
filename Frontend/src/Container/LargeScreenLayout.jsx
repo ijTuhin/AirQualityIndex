@@ -9,7 +9,7 @@ export default function LargeScreenLayout() {
     <div className={`w-full h-full lg:flex flex-row hidden`}>
       <SideBarMenu />
       <Map />
-      {query?.result !== undefined && query?.location ? <ResultSection /> : <></>}
+      { query?.location ? <ResultSection /> : <></>}
     </div>
   );
 }

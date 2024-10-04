@@ -6,12 +6,12 @@ export default function CalculatedData({ id, data }) {
       <p
         className={`lg:text-xl uppercase font-bold ${
           id === 1
-            ? "text-red-500"
+            ? "text-[#78716c]"
             : id === 4
-            ? "text-cyan-600"
+            ? "text-lime-800"
             : id === 3
-            ? "text-light-green-600"
-            : "text-orange-400"
+            ? "text-slate-400"
+            : "text-green-500"
         }`}
       >
         {data.name}

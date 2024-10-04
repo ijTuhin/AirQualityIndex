@@ -8,7 +8,7 @@ export default function MobileScreenLayout() {
   const { content, setContent, query } = useContextData();
   return (
     <div className={`w-screen h-full lg:hidden flex flex-col gap-y-3`}>
-      {content === 0 && query.result ? (
+      {content === 0 ? (
         /* Show Output data if query is made and state is false */
         <ResultSection />
       ) : (

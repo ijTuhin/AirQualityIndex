@@ -11,7 +11,7 @@ export default function ResultHeading({ value }) {
       <div className={`flex items-start gap-x-2`}>
         <p
           className={`lg:text-5xl text-[2.35rem] ${
-            value < 51 ? "text-green-600" : "text-red-600"
+            parseFloat(query?.result?.observed) < 100.0 ? "text-green-600" : "text-red-600"
           }`}
         >
           <FaLocationDot />

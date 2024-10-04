@@ -5,7 +5,33 @@ const MonthSummaryCharts = ({ data }) => {
     series: [
       {
         name: "Value",
-        data: [...values],
+        data: [
+          {
+            x: "CNN",
+            y: values[0],
+            fillColor: "#16a34a",
+          },
+          {
+            x: "CNN + LSTM",
+            y: values[1],
+            fillColor: "#57534e",
+          },
+          {
+            x: "OBSERVED",
+            y: values[2],
+            fillColor: "#10b981",
+          },
+          {
+            x: "GNN",
+            y: values[3],
+            fillColor: "#475569",
+          },
+          {
+            x: "GNN + LSTM",
+            y: values[4],
+            fillColor: "#d4d4d4",
+          },
+        ],
       },
     ],
     options: {
@@ -42,7 +68,6 @@ const MonthSummaryCharts = ({ data }) => {
           colors: ["white"],
         },
       },
-
       xaxis: {
         categories: ["CNN", "CNN + LSTM", "OBSERVED", "GNN", "GNN + LSTM"],
         position: "top",

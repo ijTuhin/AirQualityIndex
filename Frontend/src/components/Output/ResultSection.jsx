@@ -1,12 +1,14 @@
 import { useContextData } from "../Context/UseContext";
 import CalculatedData from "./CalculatedData";
 import CloseBtn from "./CloseBtn";
+import LoadingSpinner from "./LoadingSpinner";
 import MonthSummaryCharts from "./MonthSummaryCharts";
+import NotFound from "./NotFound";
 import ObservedChart from "./ObservedChart";
 import ResultHeading from "./ResultHeading";
 
 export default function ResultSection() {
-  const { query } = useContextData();
+  const { query, loading } = useContextData();
   const model = [
     {
       name: "cnn",
@@ -14,11 +16,13 @@ export default function ResultSection() {
     },
     {
       name: "cnn+lstm",
-      value: query?.result !== undefined ? parseFloat(query?.result["cnn+lstm"]) : 0,
+      value:
+        query?.result !== undefined ? parseFloat(query?.result["cnn+lstm"]) : 0,
     },
     {
       name: "observed",
-      value: query?.result !== undefined ? parseFloat(query?.result["observed"]) : 0,
+      value:
+        query?.result !== undefined ? parseFloat(query?.result["observed"]) : 0,
     },
     {
       name: "gnn",
@@ -26,7 +30,8 @@ export default function ResultSection() {
     },
     {
       name: "gnn+lstm",
-      value: query?.result !== undefined ? parseFloat(query?.result["gnn+lstm"]) : 0,
+      value:
+        query?.result !== undefined ? parseFloat(query?.result["gnn+lstm"]) : 0,
     },
   ];
   return (
@@ -39,26 +44,42 @@ export default function ResultSection() {
       >
         {/* To show selected location and time */}
         <ResultHeading value={query?.result?.observed} />
+        {!loading ? (
+          query?.result !== undefined ? (
+            <>
+              {/*  Output*/}
+              <div className="flex flex-col items-center mt-10 mb-[5.2rem] lg:mb-0 lg:mt-0">
+                {/* Observed Data */}
+                <ObservedChart />
+                {/* Calculated Data by model */}
+                <section
+                  className={`mb-3 w-full grid lg:grid-cols-2 grid-cols-2 md:grid-cols-4 gap-3`}
+                >
+                  {model.map((i, index) => {
+                    if (index !== 2)
+                      return <CalculatedData key={index} id={index} data={i} />;
+                  })}
+                </section>
+              </div>
 
-        {/*  Output*/}
-        <div className="flex flex-col items-center mt-10 mb-[5.2rem] lg:mb-0 lg:mt-0">
-          {/* Observed Data */}
-          <ObservedChart />
-          {/* Calculated Data by model */}
-          <section
-            className={`mb-3 w-full grid lg:grid-cols-2 grid-cols-2 md:grid-cols-4 gap-3`}
-          >
-            {model.map((i, index) => {
-              if (index !== 2)
-                return <CalculatedData key={index} id={index} data={i} />;
-            })}
-          </section>
-        </div>
-
-        {/* Monthly Summary */}
-        <section className={`w-[100%] relative bottom-0 lg:left-3 md:left-3`}>
-          <MonthSummaryCharts data={model} />
-        </section>
+              {/* Monthly Summary */}
+              <section
+                className={`w-[100%] relative -bottom-3 lg:left-3 md:left-3`}
+              >
+                <MonthSummaryCharts data={model} />
+              </section>
+            </>
+          ) : (
+            <div className={`mt-32 lg:mt-44`}>
+              <NotFound />
+              {/* <LoadingSpinner /> */}
+            </div>
+          )
+        ) : (
+          <div className={`mt-32 lg:mt-44`}>
+            <LoadingSpinner />
+          </div>
+        )}
       </div>
     </div>
   );
