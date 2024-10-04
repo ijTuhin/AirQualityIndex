@@ -7,7 +7,7 @@ export default function CalculatedData({ id, data }) {
         className={`lg:text-xl uppercase font-bold ${
           id === 1
             ? "text-red-500"
-            : id === 2
+            : id === 4
             ? "text-cyan-600"
             : id === 3
             ? "text-light-green-600"
@@ -20,13 +20,7 @@ export default function CalculatedData({ id, data }) {
         <span>~ Result</span>
         <span
           className={`text-base ${
-            id === 1
-              ? "text-red-500"
-              : id === 2
-              ? "text-cyan-600"
-              : id === 3
-              ? "text-light-green-600"
-              : "text-orange-400"
+            data?.value > 100 ? "text-red-500" : "text-green-600"
           }`}
         >
           {data.value}

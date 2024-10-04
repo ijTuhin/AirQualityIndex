@@ -28,7 +28,8 @@ const MonthSummaryCharts = ({ data }) => {
       },
       plotOptions: {
         bar: {
-          borderRadius: 10,
+          borderRadius: 0,
+          columnWidth: "40px",
           dataLabels: {
             position: "top", // top, center, bottom
           },
@@ -37,7 +38,7 @@ const MonthSummaryCharts = ({ data }) => {
       dataLabels: {
         enabled: true,
         formatter: function (val) {
-          return val/2;
+          return val;
         },
         offsetY: -20,
         style: {
