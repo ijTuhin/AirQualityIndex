@@ -43,20 +43,20 @@ export default function ResultSection() {
         {/*  Output*/}
         <div className="flex flex-col items-center mt-10 mb-[5.2rem] lg:mb-0 lg:mt-0">
           {/* Observed Data */}
-          <ObservedChart value={query.result.observed} />
+          <ObservedChart />
           {/* Calculated Data by model */}
           <section
             className={`mb-3 w-full grid lg:grid-cols-2 grid-cols-2 md:grid-cols-4 gap-3`}
           >
             {model.map((i, index) => {
-              if (index !== 0)
+              if (index !== 2)
                 return <CalculatedData key={index} id={index} data={i} />;
             })}
           </section>
         </div>
 
         {/* Monthly Summary */}
-        <section className={`w-[100%] relative bottom-2 lg:left-3 md:left-3`}>
+        <section className={`w-[100%] relative bottom-0 lg:left-3 md:left-3`}>
           <MonthSummaryCharts data={model} />
         </section>
       </div>

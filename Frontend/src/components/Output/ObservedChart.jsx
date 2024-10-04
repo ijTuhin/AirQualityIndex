@@ -1,9 +1,13 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 import Chart from "react-apexcharts";
+import { useContextData } from "../Context/UseContext";
 
-export default function ObservedChart({value}) {
-  const series = [value]; // This is your data
+export default function ObservedChart() {
+  const {query} = useContextData()
+  const res = query.result.observed
+  console.log(res)
+  const series = [res / 2]; // This is your data
   const options = {
     chart: {
       type: "radialBar",
@@ -34,8 +38,12 @@ export default function ObservedChart({value}) {
             show: false,
           },
           value: {
-            offsetY: -2,
-            fontSize: "22px",
+            show: true,
+            formatter: function () {
+              return res; // Custom value to display, regardless of the chart's visual value
+            },
+            offsetY: -10,
+            fontSize: "16px",
             color: "white", // percentage value style
           },
         },
@@ -75,7 +83,7 @@ export default function ObservedChart({value}) {
         ],
       },
     },
-    labels: ["Observed Results"],
+    labels: [res],
   };
 
   return (

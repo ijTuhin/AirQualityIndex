@@ -8,7 +8,7 @@ const MonthSummaryCharts = ({ data }) => {
   const options = {
     series: [
       {
-        name: "Air Quality Index",
+        name: "Value",
         data: [...values],
       },
     ],
@@ -37,7 +37,7 @@ const MonthSummaryCharts = ({ data }) => {
       dataLabels: {
         enabled: true,
         formatter: function (val) {
-          return val + "%";
+          return val/2;
         },
         offsetY: -20,
         style: {
@@ -81,12 +81,12 @@ const MonthSummaryCharts = ({ data }) => {
         labels: {
           show: false,
           formatter: function (val) {
-            return val + "%";
+            return val;
           },
         },
       },
       title: {
-        text: "Monthly Inflation in Argentina, 2002",
+        text: "Monthly Air Quality Index, 2019",
         floating: true,
         offsetY: 330,
         align: "center",

@@ -5,10 +5,10 @@ import Calendar from "../components/Query/Calendar";
 import { useContextData } from "../components/Context/UseContext";
 
 export default function MobileScreenLayout() {
-  const { content, setContent } = useContextData();
+  const { content, setContent, query } = useContextData();
   return (
     <div className={`w-screen h-full lg:hidden flex flex-col gap-y-3`}>
-      {content === 0 ? (
+      {content === 0 && query.result ? (
         /* Show Output data if query is made and state is false */
         <ResultSection />
       ) : (

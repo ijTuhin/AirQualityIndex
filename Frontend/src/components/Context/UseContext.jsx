@@ -36,10 +36,10 @@ const ProviderComponent = ({ children }) => {
         setQuery({
           ...query,
           location: display_name,
-          long: "92.335",
-          lat: "20.745",
-          // lat: parseFloat(lat),
-          // long: parseFloat(lon),
+          // long: "92.335",
+          // lat: "20.745",
+          lat: parseFloat(lat),
+          long: parseFloat(lon),
         });
         setContent(0);
       }

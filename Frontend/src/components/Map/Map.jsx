@@ -45,10 +45,10 @@ export default function Map() {
         setQuery({
           ...query,
           location: data.display_name,
-          long: "92.335",
-          lat: "20.745",
-          // lat: parseFloat(lat),
-          // long: parseFloat(lon),
+          // long: "92.335",
+          // lat: "20.745",
+          lat: parseFloat(lat),
+          long: parseFloat(lon),
         });
         // getDataFromDB(query.time, query.lat, query.long);
 
