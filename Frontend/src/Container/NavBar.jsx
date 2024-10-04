@@ -1,4 +1,3 @@
-import React from "react";
 import AboutUsModal from "../components/About/AboutUsModal";
 
 export default function NavBar() {

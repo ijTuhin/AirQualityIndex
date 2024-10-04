@@ -5,14 +5,12 @@ import axios from "axios";
 export default function LocationPointer({ getLocationName }) {
   const { position, query } = useContextData();
   const [hoveredValue, setHoveredValue] = useState(null);
-  console.log("Pointer", query.result);
 
   const getDataFromDBonHover = async (value) => {
     const url = `http://localhost:3001/${value.time}?lat=${value.lat}&long=${value.long}`;
     await axios
       .get(url)
       .then((res) => {
-        console.log(res.data.observed, "Result from Database");
         setHoveredValue(res.data.observed);
         value.event.target.openPopup();
       })

@@ -1,4 +1,3 @@
-import React from "react";
 import { useContextData } from "../components/Context/UseContext";
 import SideBarMenu from "../components/Query/SideBarMenu";
 import Map from "../components/Map/Map";

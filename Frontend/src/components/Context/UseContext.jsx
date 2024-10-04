@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { division } from "../JSON/region";
 import axios from "axios";
+import { months } from "../JSON/time";
 const Context = createContext();
 const ProviderComponent = ({ children }) => {
   const [content, setContent] = useState(1);
-  const [query, setQuery] = useState({
-    time: "2019-12-01",
-  });
+  const [val, setVal] = useState(11);
+  const [query, setQuery] = useState({});
   const [region, setRegion] = useState({
     data: division,
     type: 0,
@@ -17,16 +17,13 @@ const ProviderComponent = ({ children }) => {
 
   /* Search Location Function */
   const handleLocationSearch = async (search) => {
-    console.log(search);
     if (!search) return;
-    // Call Nominatim API to convert the search query to lat/lng
     const url = `https://nominatim.openstreetmap.org/search?format=json&q=${search}`;
 
     try {
       const response = await fetch(url);
       const data = await response.json();
       if (data.length > 0) {
-        // Extract latitude, longitude and location from the first result
         const { lat, lon, display_name } = data[0];
         const newCenter = [parseFloat(lat), parseFloat(lon)];
         // Update the map center and marker position
@@ -46,27 +43,24 @@ const ProviderComponent = ({ children }) => {
     }
   };
   const getDataFromDB = async (value) => {
-    // console.log(value);
     const url = `http://localhost:3001/${value.time}?lat=${value.lat}&long=${value.long}`;
-    // console.log(url);
     await axios
       .get(url)
       .then((res) => {
         if (res.data !== null) {
           setQuery({ ...query, result: { ...res.data } });
         }
-        console.log(query.result, "Result from Database");
       })
       .catch((err) => console.log(err));
   };
   useEffect(() => {
-    getDataFromDB({
-      time: query.time,
+    const vv = {
+      time: `2019-${months[val].value}-01`,
       lat: query.lat,
       long: query.long,
-    });
-    console.log("time :", query);
-  }, [center, query.location]);
+    };
+    getDataFromDB(vv);
+  }, [center, val, query.location]);
   return (
     <Context.Provider
       value={{
@@ -82,6 +76,8 @@ const ProviderComponent = ({ children }) => {
         setCenter,
         content,
         setContent,
+        val,
+        setVal,
         handleLocationSearch,
         getDataFromDB,
       }}

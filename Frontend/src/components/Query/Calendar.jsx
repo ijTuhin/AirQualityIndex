@@ -1,14 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 import { useContextData } from "../Context/UseContext";
 import { months } from "../JSON/time";
 
 export default function Calendar() {
-  const { query, setQuery } = useContextData();
-  const [val, setVal] = useState("12");
-  useEffect(() => {
-    setQuery({ ...query, time: `2019-${val}-01` });
-  }, [val]);
+  const { val, setVal } = useContextData();
   return (
     <div className={`lg:p-4 py-4 px-6 space-y-0`}>
       <div className={` shadow-lg`}>
@@ -25,15 +21,15 @@ export default function Calendar() {
             </button>
           </div>
           <div className={`grid grid-cols-4 gap-2`}>
-            {months.map((i) => {
+            {months.map((i, index) => {
               return (
                 <button
                   key={i.value}
                   onClick={() => {
-                    setVal(i.value);
+                    setVal(index);
                   }}
                   className={`px-1.5 py-3.5 text-[0.65rem] uppercase hover:bg-[#ffd75e] text-gray-900 rounded-lg ${
-                    val === i.value
+                    val === index
                       ? "bg-[#ffdf7e] rounded-lg m-0.5 text-[0.7rem]"
                       : "bg-[#e1e4e9]"
                   }`}

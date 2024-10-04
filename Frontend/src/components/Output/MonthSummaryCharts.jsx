@@ -1,7 +1,6 @@
 import ReactApexChart from "react-apexcharts";
 const MonthSummaryCharts = ({ data }) => {
   const values = data.map((i) => i.value);
-  console.log(values);
   const options = {
     series: [
       {
