@@ -20,10 +20,12 @@ export default function Map() {
   const {
     query,
     setQuery,
+    setPosition,
     mapViewPosition,
     setMapViewPosition,
     center,
     setCenter,
+    setContent,
   } = useContextData();
   const getLocationName = async (lat, lon) => {
     try {
@@ -33,7 +35,18 @@ export default function Map() {
       );
       const data = await response.json();
       if (data && data.display_name) {
-        setQuery({ ...query, location: data.display_name });
+        const newCenter = [parseFloat(lat), parseFloat(lon)];
+        // Update the map center and marker position
+        setMapViewPosition(newCenter);
+        setCenter(newCenter);
+        setPosition([newCenter]);
+        setQuery({
+          ...query,
+          location: data.display_name,
+          lat: parseFloat(lat),
+          long: parseFloat(lon),
+        });
+        setContent(0);
       } else {
         // console.log("Location not found");
       }
@@ -49,7 +62,6 @@ export default function Map() {
       click(e) {
         const { lat, lng } = e.latlng;
         getLocationName(lat, lng);
-        console.log(lat, lng);
       },
     });
     return null;

@@ -4,8 +4,7 @@ const Context = createContext();
 const ProviderComponent = ({ children }) => {
   const [content, setContent] = useState(1);
   const [query, setQuery] = useState({
-    time: "31-12-2019",
-    // coordinates: [24.0, 90.3563],
+    time: "2019-12-01",
   });
   const [region, setRegion] = useState({
     data: division,
@@ -25,20 +24,20 @@ const ProviderComponent = ({ children }) => {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      // console.log(data);
       if (data.length > 0) {
         // Extract latitude, longitude and location from the first result
         const { lat, lon, display_name } = data[0];
         const newCenter = [parseFloat(lat), parseFloat(lon)];
-        console.log({
-          longtitude: parseFloat(lon).toFixed(3),
-          latitude: parseFloat(lat).toFixed(3),
-        });
         // Update the map center and marker position
         setMapViewPosition(newCenter);
         setCenter(newCenter);
         setPosition([newCenter]);
-        setQuery({ ...query, location: display_name });
+        setQuery({
+          ...query,
+          location: display_name,
+          lat: parseFloat(lat),
+          long: parseFloat(lon),
+        });
         setContent(0);
       }
     } catch (err) {
@@ -46,7 +45,7 @@ const ProviderComponent = ({ children }) => {
     }
   };
   useEffect(() => {
-    // console.log(query);
+    console.log(center, query);
     // axios
     //   .get("./pm2.5.json")
     //   .then((res) => console.log(res.data[0], "Console"))

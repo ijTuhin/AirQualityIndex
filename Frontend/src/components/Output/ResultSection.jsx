@@ -29,7 +29,7 @@ export default function ResultSection() {
       className={`lg:w-[100%] bg-slate-950 relative lg:overflow-hidden overflow-visible`}
     >
       <CloseBtn />
-      <div className={` flex flex-col items-center justify-between lg:gap-y-5`}>
+      <div className={`w-full flex flex-col items-center justify-between lg:gap-y-5`}>
         {/* To show selected location and time */}
         <ResultHeading value={value} />
 
@@ -48,10 +48,7 @@ export default function ResultSection() {
         </div>
 
         {/* Monthly Summary */}
-        <section className={`w-full relative bottom-5 lg:bottom-2 right-2`}>
-          <p className="text-center text-lg text-blue-500 w-full absolute -top-1">
-            Month Summary
-          </p>
+        <section className={`w-[100%] relative bottom-2 lg:left-3 md:left-3`}>
           <MonthSummaryCharts />
         </section>
       </div>

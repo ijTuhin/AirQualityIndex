@@ -1,151 +1,109 @@
+import ReactApexChart from "react-apexcharts";
 import ApexCharts from "react-apexcharts";
 const MonthSummaryCharts = () => {
   const options = {
     series: [
       {
-        name: "observed",
-        type: "line",
-        color: "#f97316",
-        data: [
-          20, 29, 37, 36, 44, 45, 50, 58, 60, 61, 65, 45, 89, 20, 13, 66, 87,
-          90, 91, 68, 67, 34, 23, 22, 21, 67, 87, 99, 100, 44,
-        ],
-      },
-      {
-        name: "GNN+LSTM",
-        type: "bar",
-        color: "#22d3ee",
-        data: [
-          1.4, 2, 2.5, 1.5, 2.5, 2.8, 3.8, 4.6, 60, 61, 65, 45, 89, 20, 13, 66,
-          87, 90, 91, 68, 67, 34, 23, 22, 21, 67, 87, 99, 100, 44,
-        ],
-      },
-      {
-        name: "GNN",
-        type: "bar",
-        color: "#64748b",
-        data: [
-          20, 29, 37, 36, 44, 45, 50, 58, 60, 61, 65, 45, 89, 20, 13, 66, 87,
-          90, 91, 68, 67, 34, 23, 22, 21, 67, 87, 99, 100, 44,
-        ],
-      },
-      {
-        name: "CNN+LSTM",
-        type: "bar",
-        color: "#facc15",
-        data: [
-          1.1, 3, 3.1, 4, 4.1, 4.9, 6.5, 8.5, 60, 61, 65, 45, 89, 20, 13, 66,
-          87, 90, 91, 68, 67, 34, 23, 22, 21, 11, 66, 77, 22,
-        ],
-      },
-      {
-        name: "CNN",
-        type: "bar",
-        color: "#65a30d",
-        data: [
-          20, 29, 37, 36, 44, 45, 50, 58, 60, 61, 65, 45, 89, 20, 13, 66, 87,
-          90, 91, 68, 67, 34, 23, 22, 21, 67, 87, 99, 100, 44,
-        ],
+        name: "Air Quality Index",
+        data: [2.3, 3.1, 4.0, 10.1, 4.0],
       },
     ],
-    chart: {
-      type: "line",
-      stacked: false,
-      toolbar: {
-        tools: {
-          download: false,
-          zoom: false,
-          zoomin: false,
-          zoomout: false,
-          pan: false,
-          reset: false,
+    options: {
+      chart: {
+        stacked: false,
+        toolbar: {
+          tools: {
+            download: false,
+            zoom: false,
+            zoomin: false,
+            zoomout: false,
+            pan: false,
+            reset: false,
+          },
         },
       },
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    stroke: {
-      width: [2, 5, 5, 5, 5],
-    },
-    xaxis: {
-      categories: [
-        "01",
-        "02",
-        "03",
-        "04",
-        "05",
-        "06",
-        "07",
-        "08",
-        "09",
-        "10",
-        "11",
-        "12",
-        "13",
-        "14",
-        "15",
-        "16",
-        "17",
-        "18",
-        "19",
-        "20",
-        "21",
-        "22",
-        "23",
-        "24",
-        "25",
-        "26",
-        "27",
-        "28",
-        "29",
-        "30",
-      ],
-      labels: {
-        show: true,
+      plotOptions: {
+        bar: {
+          borderRadius: 10,
+          dataLabels: {
+            position: "top", // top, center, bottom
+          },
+        },
+      },
+      dataLabels: {
+        enabled: true,
+        formatter: function (val) {
+          return val + "%";
+        },
+        offsetY: -20,
         style: {
-          colors: "#6b7280",
+          fontSize: "12px",
+          colors: ["white"],
         },
       },
-    },
-    yaxis: [
-      {
-        seriesName: "Income",
-        axisTicks: {
-          show: true,
-        },
+
+      xaxis: {
+        categories: ["CNN", "CNN + LSTM", "OBSERVED", "GNN", "GNN + LSTM"],
+        position: "top",
         axisBorder: {
-          show: true,
-          color: "lightgray",
+          show: false,
         },
-        labels: {
-          style: {
-            colors: "#6b7280",
+        axisTicks: {
+          show: false,
+        },
+        crosshairs: {
+          fill: {
+            type: "gradient",
+            gradient: {
+              colorFrom: "darkcyan",
+              colorTo: "#BED1E6",
+              stops: [0, 100],
+              opacityFrom: 0.4,
+              opacityTo: 0.5,
+            },
           },
         },
         tooltip: {
           enabled: true,
         },
       },
-    ],
-    tooltip: {
-      fixed: {
-        // enabled: true,
-        position: "topLeft", // topRight, topLeft, bottomRight, bottomLeft
-        offsetY: 30,
-        offsetX: 60,
+      yaxis: {
+        axisBorder: {
+          show: false,
+        },
+        axisTicks: {
+          show: false,
+        },
+        labels: {
+          show: false,
+          formatter: function (val) {
+            return val + "%";
+          },
+        },
+      },
+      title: {
+        text: "Monthly Inflation in Argentina, 2002",
+        floating: true,
+        offsetY: 330,
+        align: "center",
+        style: {
+          color: "#444",
+        },
       },
     },
   };
 
   return (
-    <div id="line-adwords" className="h-[20rem]">
-      <ApexCharts
-        options={options}
-        series={options.series}
-        type="line"
-        height="100%"
-      />
+    <div>
+      <div id="chart" className="lg:h-[20rem] md:h-[15rem] h-[20rem]">
+        <ReactApexChart
+          options={options.options}
+          series={options.series}
+          type="bar"
+          height="100%"
+        />
+      </div>
+      <div id="html-dist"></div>
     </div>
   );
 };
